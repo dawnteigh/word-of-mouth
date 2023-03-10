@@ -114,6 +114,7 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.14.2-x86_64-linux)
       racc (~> 1.4)
+    pg (1.4.6)
     puma (5.6.5)
       nio4r (~> 2.0)
     racc (1.6.2)
@@ -149,7 +150,6 @@ GEM
     rake (13.0.6)
     reline (0.3.2)
       io-console (~> 0.5)
-    sqlite3 (1.6.1-x86_64-linux)
     thor (1.2.1)
     timeout (0.3.2)
     tzinfo (2.0.6)
@@ -166,9 +166,9 @@ DEPENDENCIES
   active_model_serializers (~> 0.10.12)
   bcrypt (~> 3.1.7)
   debug
+  pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.2)
-  sqlite3 (~> 1.4)
   tzinfo-data
 
 RUBY VERSION
