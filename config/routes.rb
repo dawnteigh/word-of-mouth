@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
-  resources :restaurants
-  resources :meals
-  resources :reviews
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  scope '/api' do
+    resources :users, only: [:update]
+    resources :reviews, only: [:create, :update, :destroy]
+    resources :meals, only: [:create, :destroy, :index]
+    resources :restaurants, only: [:create, :update, :index]
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+    get "/me", to: "users#show"
+    post "/signup", to: "users#create"
+    post "/login", to: "sessions#create"
+    delete "/logout", to: "sessions#destroy"
+    # Routing logic: fallback requests for React Router.
+    # Leave this here to help deploy your app later!
+    get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
+  end
 end
