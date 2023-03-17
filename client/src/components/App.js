@@ -1,4 +1,5 @@
 import '../css/App.css';
+import { Routes, Route } from 'react-router-dom'
 import Home from './Home'
 import NavBar from './NavBar'
 import Login from './Login'
@@ -13,6 +14,9 @@ function App() {
       {/* render if user */}
       <NavBar />
       <Home />
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
     </div>
   );
 }
