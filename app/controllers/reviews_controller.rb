@@ -8,6 +8,6 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.permit(:content, :image, :rating, :price, :meal_id, :restaurant_id, meal_attributes: [:name, :tags], restaurant_attributes: [:name, :address])
+    params.permit(:content, :image, :rating, :price, :meal_id, :restaurant_id)
   end
 end

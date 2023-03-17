@@ -2,6 +2,6 @@ class Review < ApplicationRecord
   belongs_to :user
   belongs_to :meal
   belongs_to :restaurant
-  accepts_nested_attributes_for :restaurant
-  accepts_nested_attributes_for :meal
+  validates_presence_of :content, :rating, :price
+  validates :rating, numericality: { in: 1..5 }
 end
