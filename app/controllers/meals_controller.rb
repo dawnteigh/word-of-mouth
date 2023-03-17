@@ -14,7 +14,6 @@ class MealsController < ApplicationController
   def meal_params
     params.permit(
       :name,
-      :tags,
       reviews_attributes: [:content, :image, :rating, :price, :user_id, :meal_id, :restaurant_id]
       )
   end
