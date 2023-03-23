@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
       else
         reviews = Review.all
       end
-      render json: reviews, include: :meal
+      render json: reviews, include: :meal, status: :ok
     end
 
   def create
@@ -26,7 +26,7 @@ class ReviewsController < ApplicationController
     review.destroy
     head :no_content
   end
-  
+
   private
 
   def review_params

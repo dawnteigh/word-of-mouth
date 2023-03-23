@@ -24,6 +24,8 @@ function App() {
         <Route path="/:username" element={ <UserProfile /> } />
         <Route path="/meals" element={ <Meals /> } />
         <Route path="/meals/:mealId" element={ <Meal /> } />
+        <Route path="/restaurants" element={ <Restaurants /> } />
+        <Route path="/restaurants/:restaurantId" element={ <Restaurant /> } />
       </Routes>
     </div>
   );
