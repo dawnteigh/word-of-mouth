@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   scope '/api' do
     resources :users, only: [:update]
-    resources :reviews, only: [:create, :update, :destroy]
-    resources :meals, only: [:create, :destroy, :index]
-    resources :restaurants, only: [:create, :update, :index]
+    resources :reviews, only: [:index, :create, :update, :destroy]
+    resources :meals, only: [:create, :index, :show] do
+      resources :reviews, only: [:index]
+    end
+    resources :restaurants, only: [:create, :index]
 
     get "/me", to: "users#show"
     post "/signup", to: "users#create"

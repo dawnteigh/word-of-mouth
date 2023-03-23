@@ -9,6 +9,11 @@ class MealsController < ApplicationController
     render json: meal, status: :created
   end
 
+  def show
+    meal = Meal.find_by(id: params[:id])
+    render json: meal, status: :ok
+  end
+
   private
 
   def meal_params
