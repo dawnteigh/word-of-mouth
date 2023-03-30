@@ -8,6 +8,8 @@ import ReviewNew from './ReviewNew'
 import UserProfile from './UserProfile'
 import Meals from './Meals';
 import Meal from './Meal'
+import Restaurants from './Restaurants'
+import Restaurant from './Restaurant'
 
 function App() {
   return (
