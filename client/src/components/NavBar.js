@@ -1,7 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import SearchBar from './SearchBar'
-//will have search bar in addition to nav buttons
+
 const NavBar = () => {
 
   return (
@@ -40,7 +39,6 @@ const NavBar = () => {
         Create Review
         </NavLink>
       </nav>
-      <SearchBar />
     </div>
   )
 }
