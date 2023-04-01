@@ -19,7 +19,6 @@ function App() {
       <Signup />
       {/* render if user */}
       <NavBar />
-      <Home />
       <Routes>
         <Route path="/" element={ <Home />} />
         <Route path="/review" element={ <ReviewNew /> } />
