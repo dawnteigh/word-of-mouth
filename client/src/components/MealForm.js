@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { addMeal } from '../actions/meals'
 
 const MealForm = () => {
   const [name, setName] = useState("")
+  
+  const dispatch = useDispatch()
 
   const handleSubmit = (e) => {
     e.preventDefault()
