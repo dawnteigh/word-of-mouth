@@ -2,8 +2,8 @@ import { configureStore } from '@reduxjs/toolkit'
 import sessionsReducer from "./reducers/sessionsReducer"
 import requestingReducer from "./reducers/requestingReducer"
 import errorsReducer from "./reducers/errorsReducer"
-import mealsReducer from "./reducers/mealsReducer"
-import restaurantsReducer from "./reducers/restaurantsReducer"
+import mealsReducer from "./reducers/mealsSlice"
+import restaurantsReducer from "./reducers/restaurantsSlice"
 
 const store = configureStore({
   reducer: {
