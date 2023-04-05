@@ -1,14 +1,25 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { logIn } from '../reducers/sessionsSlice'
 
 const Login = () => {
 
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const dispatch = useDispatch()
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    //fetch to /login
-
+    fetch('/api/login', {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        username: username.toLowerCase(),
+        password: password
+      })
+    })
+    .then(r => r.json())
+    .then(user => dispatch(logIn(user)))
   }
 
   return (

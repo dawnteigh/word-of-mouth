@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import sessionsReducer from "./reducers/sessionsReducer"
+import sessionsReducer from "./reducers/sessionsSlice"
 import requestingReducer from "./reducers/requestingReducer"
 import errorsReducer from "./reducers/errorsReducer"
 import mealsReducer from "./reducers/mealsSlice"
