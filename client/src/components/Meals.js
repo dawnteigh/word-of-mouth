@@ -8,7 +8,9 @@ const Meals = () => {
   useEffect(() => {
     dispatch(fetchMeals())
   }, [])
+  // const renderMeals = meals.map(m => {
 
+  // })
   return (
     <div>Meals</div>
   )

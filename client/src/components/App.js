@@ -1,4 +1,5 @@
 import '../css/App.css';
+import React, { useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Home from './Home'
 import NavBar from './NavBar'
@@ -10,13 +11,27 @@ import Meals from './Meals';
 import Meal from './Meal'
 import Restaurants from './Restaurants'
 import Restaurant from './Restaurant'
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchUser } from '../reducers/sessionsSlice'
 
 function App() {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(fetchUser())
+  }, [])
+
+  const loggedIn = useSelector(state => state.sessions.loggedIn)
+  if (!loggedIn) {
+    return (
+      <div className="App">
+        {/* render if no user */}
+        <Login />
+        <Signup />
+      </div>
+    )
+  }
   return (
     <div className="App">
-      {/* render if no user */}
-      <Login />
-      <Signup />
       {/* render if user */}
       <NavBar />
       <Routes>
