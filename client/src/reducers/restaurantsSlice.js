@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const fetchRestaurants = createAsyncThunk("restaurants/fetchRestaurants", () => {
-  return fetch("/restaurants")
+  return fetch("/api/restaurants")
     .then((response) => response.json())
     .then((data) => data)
 });

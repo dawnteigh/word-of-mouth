@@ -1,6 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchMeals } from '../reducers/mealsSlice.js'
 
 const Meals = () => {
+  const dispatch = useDispatch()
+  const meals = useSelector(state => state.meals.entities)
+  useEffect(() => {
+    dispatch(fetchMeals())
+  }, [])
+
   return (
     <div>Meals</div>
   )
