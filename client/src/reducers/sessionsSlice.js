@@ -18,9 +18,10 @@ const sessionsSlice = createSlice({
       state.currentUser = action.payload
       state.loggedIn = true
     },
-    // logOut(state) {
-    //   state = initialState
-    // },
+    logOut(state) {
+      state.currentUser = {}
+      state.loggedIn = false
+    },
   },
   extraReducers: {
     [fetchUser.pending](state) {

@@ -1,7 +1,16 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { logOut } from '../reducers/sessionsSlice'
+import { useDispatch } from 'react-redux'
 
 const NavBar = () => {
+  const dispatch = useDispatch()
+  const handleClick = () => {
+    fetch('/api/logout', {
+      method: "DELETE"
+    })
+    dispatch(logOut())
+  }
 
   return (
     <div>
@@ -39,6 +48,7 @@ const NavBar = () => {
         Create Review
         </NavLink>
       </nav>
+      <button onClick={handleClick}>Log Out</button>
     </div>
   )
 }
