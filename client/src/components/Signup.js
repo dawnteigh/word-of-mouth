@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { logIn } from '../reducers/sessionsSlice'
 
 const Signup = () => {
-
 
   const [signup, setSignup] = useState({
     username: "",
     password: "",
     password_confirmation: ""
   })
+
+  const dispatch = useDispatch()
 
   const handleChange = (e) => {
     const value = e.target.value
@@ -19,7 +22,19 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    //fetch to /signup
+    fetch('/api/signup', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        username: signup.username,
+        password: signup.password,
+        password_confirmation: signup.password_confirmation
+      })
+    })
+    .then(r => r.json())
+    .then((user) => dispatch(logIn(user)))
   }
 
   return (
