@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { logIn } from '../features/sessionsSlice'
+import { logInPost } from '../features/sessionsSlice'
 
 const Login = () => {
 
@@ -10,16 +10,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    fetch('/api/login', {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({
-        username: username.toLowerCase(),
-        password: password
-      })
-    })
-    .then(r => r.json())
-    .then(user => dispatch(logIn(user)))
+    dispatch(logInPost({ username, password }))
   }
 
   return (

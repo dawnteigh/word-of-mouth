@@ -3,8 +3,21 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const fetchUser = createAsyncThunk("sessions/fetchUser", () => {
   return fetch("/api/me")
     .then((response) => response.json())
-    .then(data => data)
+    .then(data => data) 
 });
+
+export const logInPost = createAsyncThunk("sessions/logInPost", (form) => {
+  return fetch("/api/login", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        username: form.username.toLowerCase(),
+        password: form.password
+      })
+    })
+    .then(r => r.json())
+    .then(user => user)
+})
 
 const sessionsSlice = createSlice({
   name: "sessions",
@@ -15,11 +28,6 @@ const sessionsSlice = createSlice({
     errors: []
   },
   reducers: {
-    logIn(state, action) {
-      state.currentUser = action.payload
-      state.loggedIn = true
-      state.errors = []
-    },
     logOut(state) {
       state.currentUser = {}
       state.loggedIn = false
@@ -40,6 +48,15 @@ const sessionsSlice = createSlice({
       state.status = "idle";
     }
     },
+    [logInPost.pending](state) {
+      state.status = "loading"
+    },
+    [logInPost.fulfilled](state, action) {
+      state.currentUser = action.payload
+      state.loggedIn = true
+      state.errors = []
+      state.status ="idle"
+    }
   },
 });
 
