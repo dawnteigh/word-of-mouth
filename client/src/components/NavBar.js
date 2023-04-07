@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { logOut } from '../reducers/sessionsSlice'
+import { logOut } from '../features/sessionsSlice'
 import { useDispatch } from 'react-redux'
 
 const NavBar = () => {

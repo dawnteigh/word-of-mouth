@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { logIn } from '../reducers/sessionsSlice'
+import { logIn } from '../features/sessionsSlice'
 
 const Login = () => {
 

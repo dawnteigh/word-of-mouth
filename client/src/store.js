@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
-import sessionsReducer from "./reducers/sessionsSlice"
-import mealsReducer from "./reducers/mealsSlice"
-import restaurantsReducer from "./reducers/restaurantsSlice"
+import sessionsReducer from "./features/sessionsSlice"
+import mealsReducer from "./features/mealsSlice"
+import restaurantsReducer from "./features/restaurantsSlice"
 
 const store = configureStore({
   reducer: {

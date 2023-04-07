@@ -12,9 +12,9 @@ import Meal from './Meal'
 import Restaurants from './Restaurants'
 import Restaurant from './Restaurant'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchUser } from '../reducers/sessionsSlice'
-import { fetchMeals } from '../reducers/mealsSlice'
-import { fetchRestaurants } from '../reducers/restaurantsSlice'
+import { fetchUser } from '../features/sessionsSlice'
+import { fetchMeals } from '../features/mealsSlice'
+import { fetchRestaurants } from '../features/restaurantsSlice'
 
 
 function App() {
