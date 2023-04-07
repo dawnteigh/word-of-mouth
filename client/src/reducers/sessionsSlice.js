@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const fetchUser = createAsyncThunk("sessions/fetchUser", () => {
   return fetch("/api/me")
     .then((response) => response.json())
-    .then((data) => data)
+    .then(data => data)
 });
 
 const sessionsSlice = createSlice({
@@ -12,11 +12,13 @@ const sessionsSlice = createSlice({
     currentUser: {},
     loggedIn: false,
     status: "idle",
+    errors: []
   },
   reducers: {
     logIn(state, action) {
       state.currentUser = action.payload
       state.loggedIn = true
+      state.errors = []
     },
     logOut(state) {
       state.currentUser = {}
@@ -28,9 +30,15 @@ const sessionsSlice = createSlice({
       state.status = "loading";
     },
     [fetchUser.fulfilled](state, action) {
+      if (action.payload.error) {
+        state.errors = action.payload.error
+        state.status = "idle"
+      }
+      else {
       state.currentUser = action.payload;
       state.loggedIn = true;
       state.status = "idle";
+    }
     },
   },
 });

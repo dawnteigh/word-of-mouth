@@ -1,12 +1,6 @@
-import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { fetchRestaurants } from '../reducers/restaurantsSlice'
+import React from 'react'
 
 const Restaurants = () => {
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(fetchRestaurants())
-  }, [])
 
   return (
     <div>Restaurants</div>

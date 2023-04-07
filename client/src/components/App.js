@@ -13,18 +13,29 @@ import Restaurants from './Restaurants'
 import Restaurant from './Restaurant'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchUser } from '../reducers/sessionsSlice'
+import { fetchMeals } from '../reducers/mealsSlice'
+import { fetchRestaurants } from '../reducers/restaurantsSlice'
+
 
 function App() {
   const dispatch = useDispatch()
+
   useEffect(() => {
     dispatch(fetchUser())
   }, [])
 
   const loggedIn = useSelector(state => state.sessions.loggedIn)
+
+  useEffect(() => {
+    if (loggedIn) {
+      dispatch(fetchMeals())
+      dispatch(fetchRestaurants())
+    }
+  }, [loggedIn])
+
   if (!loggedIn) {
     return (
       <div className="App">
-        {/* render if no user */}
         <Login />
         <Signup />
       </div>
@@ -32,7 +43,6 @@ function App() {
   }
   return (
     <div className="App">
-      {/* render if user */}
       <NavBar />
       <Routes>
         <Route path="/" element={ <Home />} />

@@ -14,6 +14,7 @@ const MealForm = () => {
 
   return (
     <div>
+      Add a meal:
       <form onSubmit={handleSubmit} >
         <input
           type="text"
