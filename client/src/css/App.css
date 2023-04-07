@@ -37,6 +37,10 @@
   }
 }
 
+#navbar {
+  margin-bottom: 2em;
+}
+
 #navbar a.active {
   color: red;
 }

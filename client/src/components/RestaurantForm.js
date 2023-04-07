@@ -31,7 +31,8 @@ const RestaurantForm = () => {
           name="name"
           value={form.name}
           onChange={handleChange}
-          />
+        />
+        <br/>
         <input
           type="text"
           label="Address" 
@@ -40,6 +41,7 @@ const RestaurantForm = () => {
           value={form.address}
           onChange={handleChange}
         />
+        <br/>
         <input type="submit" />
       </form>
     </div>

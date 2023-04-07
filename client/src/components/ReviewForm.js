@@ -34,6 +34,7 @@ const ReviewForm = () => {
           value={form.content}
           onChange={handleChange}
         />
+        <br/>
         <input
           type="text"
           label="Image" 
@@ -42,6 +43,7 @@ const ReviewForm = () => {
           value={form.image}
           onChange={handleChange}
         />
+        <br/>
         <input
           type="number"
           label="Rating" 
@@ -50,6 +52,7 @@ const ReviewForm = () => {
           value={form.rating}
           onChange={handleChange}
         />
+        <br/>
         <input
           type="number"
           label="Price" 
@@ -58,6 +61,7 @@ const ReviewForm = () => {
           value={form.price}
           onChange={handleChange}
         />
+        <br/>
         <input type="submit" />
       </form>
     </div>

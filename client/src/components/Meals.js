@@ -5,11 +5,14 @@ const Meals = () => {
 
   const meals = useSelector(state => state.meals.entities)
 
-  // const renderMeals = meals.map(m => {
+  const renderMeals = meals.map(m => <li key={m.id} ><a>{m.name}</a></li>)
 
-  // })
   return (
-    <div>Meals</div>
+    <div>
+      <ul>
+        {renderMeals}
+      </ul>
+    </div>
   )
 }
 

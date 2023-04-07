@@ -6,8 +6,8 @@ import ReviewForm from './ReviewForm'
 const ReviewNew = () => {
   return (
     <div>
-      <MealForm />
       <RestaurantForm />
+      <MealForm />
       <ReviewForm />
     </div>
   )

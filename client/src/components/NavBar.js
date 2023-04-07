@@ -47,8 +47,8 @@ const NavBar = () => {
         >
         Create Review
         </NavLink>
-      </nav>
       <button onClick={handleClick}>Log Out</button>
+      </nav>
     </div>
   )
 }

@@ -9,7 +9,17 @@ const MealForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    //POST to /meals
+    // fetch('/api/meals', {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json"
+    //   },
+    //   body: JSON.stringify(
+    //     {
+    //       name: name
+    //     }
+    //   ) 
+    // })
   }
 
   return (
@@ -24,6 +34,7 @@ const MealForm = () => {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
+        <br/>
         <input type="submit" />
       </form>
     </div>
