@@ -44,3 +44,8 @@
 #navbar a.active {
   color: red;
 }
+
+.thumbnail {
+  height: 200px;
+  width: auto;
+}
