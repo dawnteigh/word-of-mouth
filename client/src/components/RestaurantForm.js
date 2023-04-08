@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { addRestaurant } from '../features/restaurantsSlice'
 
 const RestaurantForm = () => {
+
+  const dispatch = useDispatch()
 
   const [form, setForm] = useState({
     name: "",
@@ -17,7 +21,7 @@ const RestaurantForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    //POST to /restaurants
+    dispatch(addRestaurant(form))
   }
 
   return (

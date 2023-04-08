@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { addMeal } from '../actions/meals'
 
 const MealForm = () => {
   const [name, setName] = useState("")
@@ -9,17 +8,7 @@ const MealForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // fetch('/api/meals', {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   },
-    //   body: JSON.stringify(
-    //     {
-    //       name: name
-    //     }
-    //   ) 
-    // })
+   
   }
 
   return (

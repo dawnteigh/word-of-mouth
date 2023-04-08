@@ -6,6 +6,19 @@ export const fetchRestaurants = createAsyncThunk("restaurants/fetchRestaurants",
     .then((data) => data)
 });
 
+export const addRestaurant = createAsyncThunk("restaurants/addRestaurant", (data) => {
+  return fetch("/api/restaurants", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      name: data.name,
+      address: data.address
+    })
+  })
+  .then(r => r.json())
+  .then(data => data)
+})
+
 const restaurantsSlice = createSlice({
   name: "restaurants",
   initialState: {
@@ -28,6 +41,13 @@ const restaurantsSlice = createSlice({
     },
     [fetchRestaurants.fulfilled](state, action) {
       state.entities = action.payload;
+      state.status = "idle";
+    },
+    [addRestaurant.pending](state) {
+      state.status = "loading";
+    },
+    [addRestaurant.fulfilled](state, action) {
+      state.entities.push(action.payload);
       state.status = "idle";
     },
   },
