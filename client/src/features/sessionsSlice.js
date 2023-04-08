@@ -66,19 +66,31 @@ const sessionsSlice = createSlice({
       state.status = "loading"
     },
     [logInPost.fulfilled](state, action) {
+      if (action.payload.error) {
+        state.errors = action.payload.error
+        state.status = "idle"
+      }
+      else {
       state.currentUser = action.payload
       state.loggedIn = true
+      state.status = "idle"
       state.errors = []
-      state.status ="idle"
+    }
     },
     [signUpPost.pending](state) {
       state.status = "loading"
     },
     [signUpPost.fulfilled](state, action) {
+      if (action.payload.error) {
+        state.errors = action.payload.error
+        state.status = "idle"
+      }
+      else {
       state.currentUser = action.payload
       state.loggedIn = true
+      state.status = "idle"
       state.errors = []
-      state.status ="idle"
+    }
     }
   },
 });
