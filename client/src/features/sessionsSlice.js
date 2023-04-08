@@ -19,6 +19,20 @@ export const logInPost = createAsyncThunk("sessions/logInPost", (form) => {
     .then(user => user)
 })
 
+export const signUpPost = createAsyncThunk("sessions/signUpPost", (form) => {
+  return fetch('/api/signup', {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({
+      username: form.username,
+      password: form.password,
+      password_confirmation: form.password_confirmation
+    })
+  })
+  .then(r => r.json())
+  .then(user => user)
+})
+
 const sessionsSlice = createSlice({
   name: "sessions",
   initialState: {
@@ -56,10 +70,19 @@ const sessionsSlice = createSlice({
       state.loggedIn = true
       state.errors = []
       state.status ="idle"
+    },
+    [signUpPost.pending](state) {
+      state.status = "loading"
+    },
+    [signUpPost.fulfilled](state, action) {
+      state.currentUser = action.payload
+      state.loggedIn = true
+      state.errors = []
+      state.status ="idle"
     }
   },
 });
 
-export const { logIn, logOut } = sessionsSlice.actions;
+export const { logOut } = sessionsSlice.actions;
 
 export default sessionsSlice.reducer;
