@@ -53,7 +53,7 @@ const mealsSlice = createSlice({
       state.status = "loading";
     },
     [addReviewToMeal.fulfilled](state, action) {
-      const meal = state.entities.find(m => m.id === action.payload.meal_id)
+      const meal = state.entities.find(m => m.id === state.selectedMeal)
       meal.reviews.push(action.payload)
       state.status = "idle";
     }
