@@ -6,7 +6,7 @@ const Reviews = () => {
 
   const reviews = useSelector(state => state.sessions.currentUser.reviews)
 
-  const renderReviews = reviews.map(r => <Review r={r} />)
+  const renderReviews = reviews.map(r => <Review key={r.id} r={r} />)
 
   return (
     <div>

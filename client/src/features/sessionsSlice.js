@@ -33,6 +33,17 @@ export const signUpPost = createAsyncThunk("sessions/signUpPost", (form) => {
   .then(user => user)
 })
 
+export const editReview = createAsyncThunk("sessions/editReview", ({ id, form }) => {
+  return fetch(`/api/reviews/${id}`, {
+    method: "PATCH",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(form)
+  })
+  .then(console.log(form))
+  .then(r => r.json())
+  .then(data => data)
+})
+
 const sessionsSlice = createSlice({
   name: "sessions",
   initialState: {
@@ -91,8 +102,23 @@ const sessionsSlice = createSlice({
       state.status = "idle"
       state.errors = []
     }
+    },
+    [editReview.pending](state) {
+      state.status = "loading"
+    },
+    [editReview.fulfilled](state, action) {
+      if (action.payload.error) {
+        state.errors = action.payload.error
+        state.status = "idle"
+      }
+      else {
+      state.currentUser.reviews = state.currentUser.reviews.map(r => r.id === action.payload.id ? action.payload : r)
+      state.status = "idle"
+      state.errors = []
     }
-  },
+    }
+  }
+  
 });
 
 export const { logOut } = sessionsSlice.actions;

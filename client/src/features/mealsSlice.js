@@ -26,9 +26,9 @@ const mealsSlice = createSlice({
     selectedMeal: null // for case where user is creating a review for an existing meal
   },
   reducers: {
-    mealUpdated(state, action) {
-      const meal = state.entities.find((m) => m.id === action.payload.id);
-      meal.name = action.payload.name;
+    mealReviewUpdated(state, action) {
+      const meal = state.entities.find((m) => m.id === action.payload.meal.id);
+      meal.reviews = meal.reviews.map(r => r.id === action.payload.id ? action.payload : r)
     },
     setMeal(state, action) {
       state.selectedMeal = parseInt(action.payload)
@@ -62,6 +62,6 @@ const mealsSlice = createSlice({
   },
 });
 
-export const { mealUpdated, setMeal } = mealsSlice.actions;
+export const { mealReviewUpdated, setMeal } = mealsSlice.actions;
 
 export default mealsSlice.reducer;
