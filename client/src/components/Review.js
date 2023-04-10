@@ -2,12 +2,16 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import ReviewEdit from './ReviewEdit'
 import { deleteReview } from '../features/sessionsSlice'
+import { mealReviewDeleted } from '../features/mealsSlice'
 
 const Review = ({ r }) => {
 
   const [toggle, setToggle] = useState(false)
   const dispatch = useDispatch()
-  const handleDelete = () => dispatch(deleteReview(r.id))
+  const handleDelete = () => { 
+    dispatch(deleteReview(r.id))
+    dispatch(mealReviewDeleted(r))
+  }
 
   return (
     <div>

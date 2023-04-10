@@ -30,6 +30,10 @@ const mealsSlice = createSlice({
       const meal = state.entities.find((m) => m.id === action.payload.meal.id);
       meal.reviews = meal.reviews.map(r => r.id === action.payload.id ? action.payload : r)
     },
+    mealReviewDeleted(state, action) {
+      const meal = state.entities.find((m) => m.id === action.payload.meal.id);
+      meal.reviews = meal.reviews.filter(r => r.id ==! action.payload.id)
+    },
     setMeal(state, action) {
       state.selectedMeal = parseInt(action.payload)
     }
@@ -62,6 +66,6 @@ const mealsSlice = createSlice({
   },
 });
 
-export const { mealReviewUpdated, setMeal } = mealsSlice.actions;
+export const { mealReviewUpdated, mealReviewDeleted, setMeal } = mealsSlice.actions;
 
 export default mealsSlice.reducer;
