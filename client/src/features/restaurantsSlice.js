@@ -35,6 +35,9 @@ const restaurantsSlice = createSlice({
       restaurant.name = action.payload.name;
       restaurant.address = action.payload.address;
     },
+    setRestaurant(state, action) {
+      state.selectedRestaurant = action.payload // dispatched with the id of clicked restaurant or null after review submission
+    }
   },
   extraReducers: {
     [fetchRestaurants.pending](state) {
@@ -55,6 +58,6 @@ const restaurantsSlice = createSlice({
   },
 });
 
-export const { restaurantAdded, restaurantUpdated } = restaurantsSlice.actions;
+export const { restaurantAdded, restaurantUpdated, setRestaurant } = restaurantsSlice.actions;
 
 export default restaurantsSlice.reducer;

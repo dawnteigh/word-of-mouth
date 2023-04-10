@@ -30,7 +30,6 @@ const RestaurantForm = () => {
 
   return (
     <div>
-      Add a restaurant:
       <form onSubmit={handleSubmit} >
         <input
           type="text"
