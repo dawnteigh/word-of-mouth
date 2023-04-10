@@ -36,7 +36,7 @@ const restaurantsSlice = createSlice({
       restaurant.address = action.payload.address;
     },
     setRestaurant(state, action) {
-      state.selectedRestaurant = action.payload // dispatched with the id of clicked restaurant or null after review submission
+      state.selectedRestaurant = parseInt(action.payload) // dispatched with the id of clicked restaurant or null after review submission
     }
   },
   extraReducers: {

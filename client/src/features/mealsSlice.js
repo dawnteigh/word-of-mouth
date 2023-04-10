@@ -6,24 +6,14 @@ export const fetchMeals = createAsyncThunk("meals/fetchMeals", () => {
     .then((data) => data)
 });
 
-// export const addMealWithReview = createAsyncThunk("meals/addMealWithReview", (data) => {
-//   return  fetch('/api/meals', {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json"
-//     },
-//     body: JSON.stringify(data)
-//   })
-//   .then(r => r.json())
-//   .then(data => data)
-// })
+export const addMealWithReview = createAsyncThunk("meals/addMealWithReview", (configObj) => {
+  return  fetch('/api/meals', configObj)
+  .then(r => r.json())
+  .then(data => data)
+})
 
-export const addReviewToMeal = createAsyncThunk("meals/addReviewToMeal", (data) => {
-  return fetch("/api/reviews", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data)
-  })
+export const addReviewToMeal = createAsyncThunk("meals/addReviewToMeal", (configObj) => {
+  return fetch("/api/reviews", configObj)
   .then(r => r.json())
   .then(data => data)
 })
@@ -36,15 +26,12 @@ const mealsSlice = createSlice({
     selectedMeal: null // for case where user is creating a review for an existing meal
   },
   reducers: {
-    mealAdded(state, action) {
-      state.entities.push(action.payload);
-    },
     mealUpdated(state, action) {
       const meal = state.entities.find((m) => m.id === action.payload.id);
       meal.name = action.payload.name;
     },
     setMeal(state, action) {
-      state.selectedMeal = action.payload
+      state.selectedMeal = parseInt(action.payload)
     }
   },
   extraReducers: {
@@ -55,13 +42,13 @@ const mealsSlice = createSlice({
       state.entities = action.payload;
       state.status = "idle";
     },
-    // [addMealWithReview.pending](state) {
-    //   state.status = "loading";
-    // },
-    // [addMealWithReview.fulfilled](state, action) {
-    //   mealAdded(action.payload)
-    //   state.status = "idle";
-    // },
+    [addMealWithReview.pending](state) {
+      state.status = "loading";
+    },
+    [addMealWithReview.fulfilled](state, action) {
+      state.entities.push(action.payload);
+      state.status = "idle";
+    },
     [addReviewToMeal.pending](state) {
       state.status = "loading";
     },
@@ -73,6 +60,6 @@ const mealsSlice = createSlice({
   },
 });
 
-export const { mealAdded, mealUpdated, setMeal } = mealsSlice.actions;
+export const { mealUpdated, setMeal } = mealsSlice.actions;
 
 export default mealsSlice.reducer;
