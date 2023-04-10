@@ -24,6 +24,7 @@ const restaurantsSlice = createSlice({
   initialState: {
     entities: [], // array of restaurants
     status: "idle", // loading state
+    selectedRestaurant: null // id of restaurant in review
   },
   reducers: {
     restaurantAdded(state, action) {
@@ -48,6 +49,7 @@ const restaurantsSlice = createSlice({
     },
     [addRestaurant.fulfilled](state, action) {
       state.entities.push(action.payload);
+      state.selectedRestaurant = action.payload.id
       state.status = "idle";
     },
   },

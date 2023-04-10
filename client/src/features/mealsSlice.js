@@ -18,6 +18,16 @@ export const fetchMeals = createAsyncThunk("meals/fetchMeals", () => {
 //   .then(data => data)
 // })
 
+export const addReviewToMeal = createAsyncThunk("meals/addReviewToMeal", (data) => {
+  return fetch("/api/reviews", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  })
+  .then(r => r.json())
+  .then(data => data)
+})
+
 const mealsSlice = createSlice({
   name: "meals",
   initialState: {
@@ -47,7 +57,15 @@ const mealsSlice = createSlice({
     // [addMealWithReview.fulfilled](state, action) {
     //   mealAdded(action.payload)
     //   state.status = "idle";
-    // }
+    // },
+    [addReviewToMeal.pending](state) {
+      state.status = "loading";
+    },
+    [addReviewToMeal.fulfilled](state, action) {
+      const meal = state.entities.find(m => m.id === action.payload.meal_id)
+      meal.reviews.push(action.payload)
+      state.status = "idle";
+    }
   },
 });
 

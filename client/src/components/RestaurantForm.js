@@ -22,6 +22,10 @@ const RestaurantForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     dispatch(addRestaurant(form))
+    setForm({
+      name: "",
+      address: ""
+    })
   }
 
   return (
