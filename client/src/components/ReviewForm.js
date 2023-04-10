@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 
 const ReviewForm = () => {
-  
+  const meal = useSelector(state => state.meals.selectedMeal)
+  const [name, setName] = useState("")
   const [form, setForm] = useState({
     content: "",
     image: "",
@@ -26,6 +28,17 @@ const ReviewForm = () => {
     <div>
       Add a review:
       <form onSubmit={handleSubmit} >
+        {meal ? 
+        null :
+        <input
+        type="text"
+        label="Name" 
+        placeholder="Name"
+        name="name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        /> }
+        <br/>
         <input
           type="textarea"
           label="Content" 

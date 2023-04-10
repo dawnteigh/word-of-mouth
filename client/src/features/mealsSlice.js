@@ -33,6 +33,7 @@ const mealsSlice = createSlice({
   initialState: {
     entities: [], // array of meals
     status: "idle", // loading state
+    selectedMeal: null // for case where user is creating a review for an existing meal
   },
   reducers: {
     mealAdded(state, action) {
@@ -42,6 +43,9 @@ const mealsSlice = createSlice({
       const meal = state.entities.find((m) => m.id === action.payload.id);
       meal.name = action.payload.name;
     },
+    setMeal(state, action) {
+      state.selectedMeal = action.payload
+    }
   },
   extraReducers: {
     [fetchMeals.pending](state) {
@@ -69,6 +73,6 @@ const mealsSlice = createSlice({
   },
 });
 
-export const { mealAdded, mealUpdated } = mealsSlice.actions;
+export const { mealAdded, mealUpdated, setMeal } = mealsSlice.actions;
 
 export default mealsSlice.reducer;
