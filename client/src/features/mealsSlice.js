@@ -48,6 +48,7 @@ const mealsSlice = createSlice({
     [addMealWithReview.fulfilled](state, action) {
       state.entities.push(action.payload);
       state.status = "idle";
+      state.selectedMeal = null;
     },
     [addReviewToMeal.pending](state) {
       state.status = "loading";
@@ -56,6 +57,7 @@ const mealsSlice = createSlice({
       const meal = state.entities.find(m => m.id === state.selectedMeal)
       meal.reviews.push(action.payload)
       state.status = "idle";
+      state.selectedMeal = null;
     }
   },
 });

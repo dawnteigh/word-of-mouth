@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { addMealWithReview, addReviewToMeal } from '../features/mealsSlice'
+import { setRestaurant } from '../features/restaurantsSlice'
 
 const ReviewForm = () => {
   const meal = useSelector(state => state.meals.selectedMeal)
@@ -57,8 +58,10 @@ const ReviewForm = () => {
     if (meal) {
       dispatch(addReviewToMeal(reviewObj))
     }
-    else
-    dispatch(addMealWithReview(mealObj))
+    else {
+      dispatch(addMealWithReview(mealObj))
+    }
+    dispatch(setRestaurant(null))
   }
 
   return (
