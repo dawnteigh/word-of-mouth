@@ -39,9 +39,12 @@ export const editReview = createAsyncThunk("sessions/editReview", ({ id, form })
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify(form)
   })
-  .then(console.log(form))
   .then(r => r.json())
   .then(data => data)
+})
+
+export const deleteReview = createAsyncThunk("sessions/deleteReview", (id) => {
+  return fetch(`/api/reviews/${id}`, { method: "DELETE" })
 })
 
 const sessionsSlice = createSlice({
@@ -116,6 +119,19 @@ const sessionsSlice = createSlice({
       state.status = "idle"
       state.errors = []
     }
+    },
+    [deleteReview.pending](state) {
+      state.status = "loading"
+    },
+    [deleteReview.fulfilled](state, action) {
+      if (action.payload.error) {
+        state.errors = action.payload.error
+        state.status = "idle"
+      }
+      else {
+        state.currentUser.reviews = state.currentUser.reviews.filter(r => r.id !== action.meta.arg)
+        state.status = "idle"
+      }
     }
   }
   
