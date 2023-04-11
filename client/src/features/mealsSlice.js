@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 
 export const fetchMeals = createAsyncThunk("meals/fetchMeals", () => {
   return fetch("/api/meals")
@@ -31,8 +31,8 @@ const mealsSlice = createSlice({
       meal.reviews = meal.reviews.map(r => r.id === action.payload.id ? action.payload : r)
     },
     mealReviewDeleted(state, action) {
-      const meal = state.entities.find((m) => m.id === action.payload.meal.id);
-      meal.reviews = meal.reviews.filter(r => r.id ==! action.payload.id)
+      let meal = state.entities.find((m) => m.id === action.payload.meal.id);
+      meal.reviews = meal.reviews.filter(r => r.id !== action.payload.id)
     },
     setMeal(state, action) {
       state.selectedMeal = parseInt(action.payload)

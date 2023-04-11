@@ -45,6 +45,7 @@ export const editReview = createAsyncThunk("sessions/editReview", ({ id, form })
 
 export const deleteReview = createAsyncThunk("sessions/deleteReview", (id) => {
   return fetch(`/api/reviews/${id}`, { method: "DELETE" })
+    .then(r => r.data)
 })
 
 const sessionsSlice = createSlice({
@@ -56,6 +57,9 @@ const sessionsSlice = createSlice({
     errors: []
   },
   reducers: {
+    addUserReview(state, action) {
+      state.currentUser.reviews.push(action.payload)
+    },
     logOut(state) {
       state.currentUser = {}
       state.loggedIn = false
@@ -124,19 +128,13 @@ const sessionsSlice = createSlice({
       state.status = "loading"
     },
     [deleteReview.fulfilled](state, action) {
-      if (action.payload.error) {
-        state.errors = action.payload.error
-        state.status = "idle"
-      }
-      else {
         state.currentUser.reviews = state.currentUser.reviews.filter(r => r.id !== action.meta.arg)
         state.status = "idle"
-      }
-    }
+    }   
   }
   
 });
 
-export const { logOut } = sessionsSlice.actions;
+export const { addUserReview, logOut } = sessionsSlice.actions;
 
 export default sessionsSlice.reducer;
