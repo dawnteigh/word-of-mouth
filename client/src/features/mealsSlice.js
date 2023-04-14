@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const fetchMeals = createAsyncThunk("meals/fetchMeals", () => {
   return fetch("/api/meals")
@@ -7,13 +7,21 @@ export const fetchMeals = createAsyncThunk("meals/fetchMeals", () => {
 });
 
 export const addMealWithReview = createAsyncThunk("meals/addMealWithReview", (configObj) => {
-  return  fetch('/api/meals', configObj)
+  return  fetch('/api/meals', {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(configObj)
+  })
   .then(r => r.json())
   .then(data => data)
 })
 
 export const addReviewToMeal = createAsyncThunk("meals/addReviewToMeal", (configObj) => {
-  return fetch("/api/reviews", configObj)
+  return fetch("/api/reviews", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(configObj)
+  })
   .then(r => r.json())
   .then(data => data)
 })
@@ -23,7 +31,8 @@ const mealsSlice = createSlice({
   initialState: {
     entities: [], // array of meals
     status: "idle", // loading state
-    selectedMeal: null // for case where user is creating a review for an existing meal
+    selectedMeal: null, // for case where user is creating a review for an existing meal
+    newReview: null
   },
   reducers: {
     mealReviewUpdated(state, action) {
@@ -36,6 +45,9 @@ const mealsSlice = createSlice({
     },
     setMeal(state, action) {
       state.selectedMeal = parseInt(action.payload)
+    },
+    resetReview(state) {
+      state.newReview = null
     }
   },
   extraReducers: {
@@ -53,6 +65,7 @@ const mealsSlice = createSlice({
       state.entities.push(action.payload);
       state.status = "idle";
       state.selectedMeal = null;
+      state.newReview = action.payload.reviews[0]
     },
     [addReviewToMeal.pending](state) {
       state.status = "loading";
@@ -62,10 +75,11 @@ const mealsSlice = createSlice({
       meal.reviews.push(action.payload)
       state.status = "idle";
       state.selectedMeal = null;
+      state.newReview = action.payload
     }
   },
 });
 
-export const { mealReviewUpdated, mealReviewDeleted, setMeal } = mealsSlice.actions;
+export const { mealReviewUpdated, mealReviewDeleted, setMeal, resetReview } = mealsSlice.actions;
 
 export default mealsSlice.reducer;

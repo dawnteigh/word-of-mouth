@@ -12,19 +12,19 @@ import Meal from './Meal'
 import Restaurants from './Restaurants'
 import Restaurant from './Restaurant'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchUser } from '../features/sessionsSlice'
-import { fetchMeals } from '../features/mealsSlice'
+import { fetchUser, addUserReview } from '../features/sessionsSlice'
+import { fetchMeals, resetReview } from '../features/mealsSlice'
 import { fetchRestaurants } from '../features/restaurantsSlice'
 
 
 function App() {
   const dispatch = useDispatch()
+  const loggedIn = useSelector(state => state.sessions.loggedIn)
+  const review = useSelector(state => state.meals.newReview)
 
   useEffect(() => {
     dispatch(fetchUser())
   }, [])
-
-  const loggedIn = useSelector(state => state.sessions.loggedIn)
 
   useEffect(() => {
     if (loggedIn) {
@@ -32,6 +32,13 @@ function App() {
       dispatch(fetchRestaurants())
     }
   }, [loggedIn])
+
+  useEffect(() => {
+    if (review) {
+      dispatch(addUserReview(review))
+      dispatch(resetReview())
+    }
+  }, [review])
 
   if (!loggedIn) {
     return (

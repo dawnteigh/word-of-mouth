@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { addMealWithReview, addReviewToMeal } from '../features/mealsSlice'
+import { addUserReview } from '../features/sessionsSlice'
 import { setRestaurant } from '../features/restaurantsSlice'
 
 const ReviewForm = () => {
   const meal = useSelector(state => state.meals.selectedMeal)
   const restaurant = useSelector(state => state.restaurants.selectedRestaurant)
   const userId = useSelector(state => state.sessions.currentUser.id)
+  const review = useSelector(state => state.meals.newReview)
   const [name, setName] = useState("")
   const [form, setForm] = useState({
     content: "",
@@ -25,9 +27,6 @@ const ReviewForm = () => {
   }
 
   const mealObj = {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
       name: name,
       reviews_attributes: [{
         user_id: userId,
@@ -37,20 +36,15 @@ const ReviewForm = () => {
         rating: form.rating,
         price: form.price
     }]
-    })
   }
 
   const reviewObj = {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
       restaurant_id: restaurant,
       meal_id: meal,
       content: form.content,
       image: form.image,
       rating: form.rating,
       price: form.price
-    })
   }
 
   const handleSubmit = (e) => {
