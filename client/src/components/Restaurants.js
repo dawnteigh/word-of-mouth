@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { setRestaurant } from '../features/restaurantsSlice'
 
@@ -6,12 +6,15 @@ const Restaurants = () => {
 
   const restaurants = useSelector(state => state.restaurants.entities)
   const dispatch = useDispatch()
+  const [filter, setFilter] = useState("")
+
+  const filteredRestaurants = restaurants.filter(r => r.name.toLowerCase().includes(filter.toLowerCase()))
 
   const handleClick = (e) => {
     dispatch(setRestaurant(e.target.id))
   }
 
-  const renderRestaurants = restaurants.map(r => {
+  const renderRestaurants = filteredRestaurants.map(r => {
     return (
       <div 
         key={r.id}
@@ -25,6 +28,11 @@ const Restaurants = () => {
   })
   return (
     <div>
+      <input
+        value={filter}
+        onChange={(e) => setFilter(e.target.value)}
+        placeholder="Search restaurants"
+      />
       {renderRestaurants}
     </div>
   )

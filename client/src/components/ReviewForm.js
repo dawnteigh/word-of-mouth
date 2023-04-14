@@ -67,7 +67,7 @@ const ReviewForm = () => {
         <input
         type="text"
         label="Name" 
-        placeholder="Name"
+        placeholder="Name of your dish"
         name="name"
         value={name}
         onChange={(e) => setName(e.target.value)}
