@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { addMealWithReview, addReviewToMeal } from '../features/mealsSlice'
-import { addUserReview } from '../features/sessionsSlice'
+import { addMealWithReview, addReviewToMeal, setMeal } from '../features/mealsSlice'
 import { setRestaurant } from '../features/restaurantsSlice'
 
 const ReviewForm = () => {
   const meal = useSelector(state => state.meals.selectedMeal)
   const restaurant = useSelector(state => state.restaurants.selectedRestaurant)
   const userId = useSelector(state => state.sessions.currentUser.id)
-  const review = useSelector(state => state.meals.newReview)
   const [name, setName] = useState("")
   const [form, setForm] = useState({
     content: "",
@@ -46,6 +44,8 @@ const ReviewForm = () => {
       rating: form.rating,
       price: form.price
   }
+
+  const goBack = () => (meal) ? dispatch(setMeal(null)) : dispatch(setRestaurant(null))
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -111,6 +111,7 @@ const ReviewForm = () => {
         <br/>
         <input type="submit" />
       </form>
+      <button onClick={goBack}>{"< Back"}</button>
     </div>
   )
 }
