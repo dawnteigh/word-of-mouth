@@ -4,4 +4,9 @@ class Review < ApplicationRecord
   belongs_to :restaurant
   validates_presence_of :content, :rating, :price
   validates :rating, numericality: { in: 1..5 }
+
+  def key
+    "#{meal_id}" + "#" + "#{restaurant_id}"
+  end
+
 end

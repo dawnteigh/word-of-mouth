@@ -1,5 +1,5 @@
 class ReviewSerializer < ActiveModel::Serializer
-  attributes :id, :content, :image, :rating, :price, :user_id, :restaurant, :meal, :key
+  attributes :id, :content, :image, :rating, :price, :user_id, :restaurant, :meal, :key, :avg_rating
 
   def meal 
     Meal.find(object.meal_id)
@@ -9,8 +9,9 @@ class ReviewSerializer < ActiveModel::Serializer
     Restaurant.find(object.restaurant_id)
   end
 
-  def key
-    "#{object.meal_id}" + "#" + "#{object.restaurant_id}"
+  def avg_rating
+    reviews = Review.all.filter { |r| r.key === object.key }.map { |r| r.rating }
+    reviews.sum / reviews.size
   end
 
 end
