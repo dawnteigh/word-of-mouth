@@ -30,8 +30,6 @@ function App() {
       dispatch(fetchMeals())
       dispatch(fetchRestaurants())
     }
-    else
-      navigate("/")
   }, [loggedIn])
 
   useEffect(() => {
@@ -41,13 +39,12 @@ function App() {
     }
   }, [review])
 
-  if (loading) {
-    return <h1>Loading...</h1>
-  }
-
   return (
     <div className="App">
       <NavBar />
+      {
+      loading ?
+      <h1>Loading...</h1> :
       <Routes>
         <Route path="/" element={ <Home />} />
         <Route path="/review" element={ <ReviewNew /> } />
@@ -56,6 +53,7 @@ function App() {
         <Route path="/login" element={ <Login /> } />
         <Route path="/signup" element={ <Signup /> } />
       </Routes>
+      }
     </div>
   );
 }
