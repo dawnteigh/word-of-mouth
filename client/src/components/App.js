@@ -19,9 +19,8 @@ import { fetchRestaurants } from '../features/restaurantsSlice'
 function App() {
   const dispatch = useDispatch()
   const loggedIn = useSelector(state => state.sessions.loggedIn)
-  const meals = useSelector(state => state.meals.entities)
-  const restaurants = useSelector(state => state.restaurants.entities)
   const review = useSelector(state => state.meals.newReview)
+  const loading = useSelector(state => state.sessions.status === "loading" ? true : false)
   
   useEffect(() => {
     dispatch(fetchUser())
@@ -41,13 +40,8 @@ function App() {
     }
   }, [review])
 
-  if (!loggedIn) {
-    return (
-      <div className="App">
-        <Login />
-        <Signup />
-      </div>
-    )
+  if (loading) {
+    return <h1>Loading...</h1>
   }
 
   return (
@@ -58,8 +52,8 @@ function App() {
         <Route path="/review" element={ <ReviewNew /> } />
         <Route path="/meals" element={ <MealFind /> } />
         <Route path="/meals/:mealId" element={ <Meal /> } />
-        <Route path="/restaurants" element={ <Restaurants /> } />
-        <Route path="/restaurants/:restaurantId" element={ <Restaurant /> } />
+        <Route path="/login" element={ <Login /> } />
+        <Route path="/signup" element={ <Signup /> } />
       </Routes>
     </div>
   );

@@ -1,15 +1,42 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { logOut } from '../features/sessionsSlice'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 const NavBar = () => {
   const dispatch = useDispatch()
+  const loggedIn = useSelector(state => state.sessions.loggedIn)
+
   const handleClick = () => {
     fetch('/api/logout', {
       method: "DELETE"
     })
     dispatch(logOut())
+  }
+
+  if (!loggedIn) {
+    return (
+      <div>
+      <nav id="navbar">
+        <NavLink
+          to="/login"
+          className= {({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "active" : ""
+            }
+        >
+        Log In
+        </NavLink>
+        <NavLink
+          to="/signup"
+          className= {({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "active" : ""
+            }
+        >
+        Sign Up
+        </NavLink>
+      </nav>
+    </div>
+    )
   }
 
   return (
@@ -29,15 +56,7 @@ const NavBar = () => {
             isPending ? "pending" : isActive ? "active" : ""
             }
         >
-        Meals
-        </NavLink>
-        <NavLink
-          to="/restaurants"
-          className= {({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "active" : ""
-            }
-        >
-        Restaurants
+        Find a Meal
         </NavLink>
         <NavLink
           to="/review"

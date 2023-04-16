@@ -5,6 +5,16 @@ import { useSelector } from 'react-redux'
 const Home = () => {
 
   const user = useSelector(state => state.sessions.currentUser)
+  const loggedIn = useSelector(state => state.sessions.loggedIn)
+
+  if (!loggedIn) {
+    return (
+      <div>
+        <h1>Welcome to Word of Mouth!</h1>
+        Please log in or sign up to continue.
+      </div>
+    )
+  }
 
   return (
     <div>
