@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { signUpPost } from '../features/sessionsSlice'
+import { useNavigate } from 'react-router-dom'
 
 const Signup = () => {
 
@@ -11,6 +12,7 @@ const Signup = () => {
   })
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const handleChange = (e) => {
     const value = e.target.value
@@ -23,6 +25,7 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     dispatch(signUpPost(signup))
+    navigate("/")
   }
 
   return (

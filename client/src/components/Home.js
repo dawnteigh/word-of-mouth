@@ -11,7 +11,7 @@ const Home = () => {
     return (
       <div>
         <h1>Welcome to Word of Mouth!</h1>
-        Please log in or sign up to continue.
+        Log in or sign up to get started!
       </div>
     )
   }
