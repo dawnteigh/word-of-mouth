@@ -31,6 +31,7 @@ const mealsSlice = createSlice({
   initialState: {
     entities: [], // array of meals
     status: "idle", // loading state
+    errors: [],
     selectedMeal: null, // for case where user is creating a review for an existing meal
     newReview: null
   },
@@ -62,20 +63,34 @@ const mealsSlice = createSlice({
       state.status = "loading";
     },
     [addMealWithReview.fulfilled](state, action) {
-      state.entities.push(action.payload);
-      state.status = "idle";
-      state.selectedMeal = null;
-      state.newReview = action.payload.reviews[0]
+      if (action.payload.error) {
+        state.errors = action.payload.error
+        state.status = "idle"
+      }
+      else {
+        state.entities.push(action.payload);
+        state.status = "idle";
+        state.selectedMeal = null;
+        state.newReview = action.payload.reviews[0]
+        state.errors = []
+      }
     },
     [addReviewToMeal.pending](state) {
       state.status = "loading";
     },
     [addReviewToMeal.fulfilled](state, action) {
-      const meal = state.entities.find(m => m.id === state.selectedMeal)
-      meal.reviews.push(action.payload)
-      state.status = "idle";
-      state.selectedMeal = null;
-      state.newReview = action.payload
+      if (action.payload.error) {
+        state.errors = action.payload.error
+        state.status = "idle"
+      }
+      else {
+        const meal = state.entities.find(m => m.id === state.selectedMeal)
+        meal.reviews.push(action.payload)
+        state.status = "idle";
+        state.selectedMeal = null;
+        state.newReview = action.payload
+        state.errors = []
+      }
     }
   },
 });

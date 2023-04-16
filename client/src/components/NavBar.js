@@ -1,13 +1,12 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { logOut } from '../features/sessionsSlice'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 const NavBar = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const loggedIn = useSelector(state => state.sessions.loggedIn)
 
   const handleClick = () => {
     fetch('/api/logout', {
@@ -15,31 +14,6 @@ const NavBar = () => {
     })
     dispatch(logOut())
     navigate("/")
-  }
-
-  if (!loggedIn) {
-    return (
-      <div>
-      <nav id="navbar">
-        <NavLink
-          to="/login"
-          className= {({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "active" : ""
-            }
-        >
-        Log In
-        </NavLink>
-        <NavLink
-          to="/signup"
-          className= {({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "active" : ""
-            }
-        >
-        Sign Up
-        </NavLink>
-      </nav>
-    </div>
-    )
   }
 
   return (

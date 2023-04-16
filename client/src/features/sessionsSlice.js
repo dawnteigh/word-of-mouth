@@ -71,13 +71,12 @@ const sessionsSlice = createSlice({
     },
     [fetchUser.fulfilled](state, action) {
       if (action.payload.error) {
-        state.errors = action.payload.error
         state.status = "idle"
       }
       else {
-      state.currentUser = action.payload;
-      state.loggedIn = true;
-      state.status = "idle";
+        state.currentUser = action.payload;
+        state.loggedIn = true;
+        state.status = "idle";
     }
     },
     [logInPost.pending](state) {
@@ -89,10 +88,10 @@ const sessionsSlice = createSlice({
         state.status = "idle"
       }
       else {
-      state.currentUser = action.payload
-      state.loggedIn = true
-      state.status = "idle"
-      state.errors = []
+        state.currentUser = action.payload
+        state.loggedIn = true
+        state.status = "idle"
+        state.errors = []
     }
     },
     [signUpPost.pending](state) {
@@ -104,10 +103,10 @@ const sessionsSlice = createSlice({
         state.status = "idle"
       }
       else {
-      state.currentUser = action.payload
-      state.loggedIn = true
-      state.status = "idle"
-      state.errors = []
+        state.currentUser = action.payload
+        state.loggedIn = true
+        state.status = "idle"
+        state.errors = []
     }
     },
     [editReview.pending](state) {
@@ -119,9 +118,9 @@ const sessionsSlice = createSlice({
         state.status = "idle"
       }
       else {
-      state.currentUser.reviews = state.currentUser.reviews.map(r => r.id === action.payload.id ? action.payload : r)
-      state.status = "idle"
-      state.errors = []
+        state.currentUser.reviews = state.currentUser.reviews.map(r => r.id === action.payload.id ? action.payload : r)
+        state.status = "idle"
+        state.errors = []
     }
     },
     [deleteReview.pending](state) {
