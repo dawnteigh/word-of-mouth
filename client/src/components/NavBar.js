@@ -2,9 +2,11 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { logOut } from '../features/sessionsSlice'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 const NavBar = () => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const loggedIn = useSelector(state => state.sessions.loggedIn)
 
   const handleClick = () => {
@@ -12,6 +14,7 @@ const NavBar = () => {
       method: "DELETE"
     })
     dispatch(logOut())
+    navigate("/")
   }
 
   if (!loggedIn) {
