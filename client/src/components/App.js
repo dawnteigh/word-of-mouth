@@ -19,8 +19,10 @@ import { fetchRestaurants } from '../features/restaurantsSlice'
 function App() {
   const dispatch = useDispatch()
   const loggedIn = useSelector(state => state.sessions.loggedIn)
+  const meals = useSelector(state => state.meals.entities)
+  const restaurants = useSelector(state => state.restaurants.entities)
   const review = useSelector(state => state.meals.newReview)
-
+  
   useEffect(() => {
     dispatch(fetchUser())
   }, [])
@@ -47,6 +49,7 @@ function App() {
       </div>
     )
   }
+
   return (
     <div className="App">
       <NavBar />

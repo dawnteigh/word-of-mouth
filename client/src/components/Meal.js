@@ -7,6 +7,10 @@ const Meal = () => {
   let { mealId } = useParams()
   const meal = useSelector(state => state.meals.entities.find(m => m.id === parseInt(mealId)))
 
+  if (!meal) {
+    return <h1>Loading...</h1>
+  }
+
   const restaurantsWithAvg = meal.restaurants.map(r => {
     const review = meal.reviews.find(rev => rev.restaurant.id === r.id)
     return {
@@ -36,7 +40,7 @@ const Meal = () => {
     <div>
       <h1>{meal.name}</h1>
       <br/>
-      {renderRestaurants}
+      {meal ? renderRestaurants : null}
     </div>
   )
 }
