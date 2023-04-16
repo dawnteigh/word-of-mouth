@@ -1,5 +1,8 @@
 class MealSerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attributes :id, :name, :restaurants
   has_many :reviews
-  has_many :restaurants
+
+  def restaurants
+    object.restaurants.uniq
+  end
 end
