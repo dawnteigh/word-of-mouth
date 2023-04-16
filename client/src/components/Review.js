@@ -15,7 +15,7 @@ const Review = ({ r }) => {
 
   return (
     <div>
-      <img className="thumbnail" src={r.image} /><br/>
+      <img className="thumbnail" src={r.image} alt={r.meal.name} /><br/>
       <b>{r.meal.name}</b><br/>
       <i>{r.restaurant.name}</i><br/>
       <p>{r.content}</p>
