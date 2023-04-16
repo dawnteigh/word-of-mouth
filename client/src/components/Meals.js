@@ -15,7 +15,7 @@ const Meals = () => {
 
   const renderMeals = filteredMeals.map(m => {
     return (
-      <div key={m.id} id={m.id} onClick={() =>handleClick(m.id)} >
+      <div key={m.id} id={m.id} onClick={() => handleClick(m.id)} >
         <MealCard meal={m} />
       </div>
     )

@@ -1,8 +1,13 @@
 import React from 'react'
-//shows a given meal and its reviews
+import { useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+
 const Meal = () => {
+  let { mealId } = useParams()
+  const meal = useSelector(state => state.meals.entities.find(m => m.id === parseInt(mealId)))
+
   return (
-    <div>Meal</div>
+    <div>{meal.name}</div>
   )
 }
 

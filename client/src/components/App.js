@@ -6,8 +6,7 @@ import NavBar from './NavBar'
 import Login from './Login'
 import Signup from './Signup'
 import ReviewNew from './ReviewNew'
-import UserProfile from './UserProfile'
-import Meals from './Meals';
+import MealFind from './MealFind';
 import Meal from './Meal'
 import Restaurants from './Restaurants'
 import Restaurant from './Restaurant'
@@ -54,8 +53,7 @@ function App() {
       <Routes>
         <Route path="/" element={ <Home />} />
         <Route path="/review" element={ <ReviewNew /> } />
-        <Route path="/:username" element={ <UserProfile /> } />
-        <Route path="/meals" element={ <Meals /> } />
+        <Route path="/meals" element={ <MealFind /> } />
         <Route path="/meals/:mealId" element={ <Meal /> } />
         <Route path="/restaurants" element={ <Restaurants /> } />
         <Route path="/restaurants/:restaurantId" element={ <Restaurant /> } />
