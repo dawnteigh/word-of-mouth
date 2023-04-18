@@ -14,15 +14,15 @@ const Meals = () => {
 
   return (
     <div>
-      <h3>Find your dish or create a review for a new one:</h3>
       <input
         value={filter}
         onChange={(e) => setFilter(e.target.value)}
         placeholder="Search meals"
       />
       <br/><br/>
-      <div className='foodGrid'>
-        <Card.Group itemsPerRow={2} centered >
+      <div className="reviewGrid">
+      <br/>
+        <Card.Group itemsPerRow="two" centered >
           {renderMeals}
         </Card.Group>
       </div>

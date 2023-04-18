@@ -22,7 +22,7 @@ const MealFind = () => {
       />
       <br/><br/>
       <div className='foodGrid'>
-        <Card.Group itemsPerRow={2} centered >
+        <Card.Group itemsPerRow={3} centered >
           {renderMeals}
         </Card.Group>
       </div>

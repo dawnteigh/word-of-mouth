@@ -61,3 +61,9 @@
   margin-left: 25%;
   margin-right: 25%;
 }
+
+.reviewGrid {
+  height: 60vh;
+  overflow: auto;
+  overflow-x: hidden
+}

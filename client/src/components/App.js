@@ -1,7 +1,7 @@
 import '../css/App.css';
 import React, { useEffect, useState } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
-import { Button, Header, Icon, Modal, Divider, Grid, Image, Segment } from 'semantic-ui-react'
+import { Button, Header, Icon, Modal, Divider, Grid, Segment } from 'semantic-ui-react'
 import Home from './Home'
 import NavBar from './NavBar'
 import Login from './Login'
@@ -13,7 +13,7 @@ import Meal from './Meal'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchUser, addUserReview } from '../features/sessionsSlice'
 import { fetchMeals, resetReview } from '../features/mealsSlice'
-import { fetchRestaurants } from '../features/restaurantsSlice'
+import { fetchRestaurants, setRestaurant } from '../features/restaurantsSlice'
 
 
 function App() {
@@ -40,6 +40,8 @@ function App() {
     if (review) {
       dispatch(addUserReview(review))
       dispatch(resetReview())
+      dispatch(setRestaurant(null))
+      navigate("/myreviews")
     }
   }, [review])
 

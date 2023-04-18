@@ -17,14 +17,14 @@ const MealCard = ({ meal }) => {
   }
 
   return (
-      <Card onClick={() => handleClick(meal.id)}>
+      <Card onClick={() => handleClick(meal.id)} style={{width: "200px", margin: "5px"}} raised >
         <Card.Content>
           <Card.Header>{meal.name}</Card.Header>
+        </Card.Content>
           <Image 
             src={meal.reviews[Math.floor(Math.random() * meal.reviews.length)].image} 
             alt={meal.name} className="fitted"
           />
-        </Card.Content>
       </Card>
   )
 }

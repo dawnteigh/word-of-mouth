@@ -11,8 +11,8 @@ const ReviewForm = () => {
   const [form, setForm] = useState({
     content: "",
     image: "",
-    rating: 0,
-    price: 0
+    rating: "",
+    price: ""
   })
   const dispatch = useDispatch()
 
@@ -55,12 +55,10 @@ const ReviewForm = () => {
     else {
       dispatch(addMealWithReview(mealObj))
     }
-    dispatch(setRestaurant(null))
   }
 
   return (
     <div>
-      Add a review:
       <form onSubmit={handleSubmit} >
         {meal ? 
         null :
@@ -73,6 +71,9 @@ const ReviewForm = () => {
         onChange={(e) => setName(e.target.value)}
         /> }
         <br/>
+        {meal ?
+        <h3>Write your review:</h3> :
+        null}
         <input
           type="text-area"
           label="Content" 
