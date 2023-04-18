@@ -38,6 +38,9 @@ const restaurantsSlice = createSlice({
     },
     setRestaurant(state, action) {
       state.selectedRestaurant = parseInt(action.payload) // dispatched with the id of clicked restaurant or null after review submission
+    },
+    resetRestErrors(state) {
+      state.errors = []
     }
   },
   extraReducers: {
@@ -66,6 +69,6 @@ const restaurantsSlice = createSlice({
   },
 });
 
-export const { restaurantAdded, restaurantUpdated, setRestaurant } = restaurantsSlice.actions;
+export const { restaurantAdded, restaurantUpdated, setRestaurant, resetRestErrors } = restaurantsSlice.actions;
 
 export default restaurantsSlice.reducer;

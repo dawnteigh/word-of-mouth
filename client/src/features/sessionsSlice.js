@@ -64,6 +64,9 @@ const sessionsSlice = createSlice({
       state.currentUser = {}
       state.loggedIn = false
     },
+    resetSessErrors(state) {
+      state.errors = []
+    }
   },
   extraReducers: {
     [fetchUser.pending](state) {
@@ -134,6 +137,6 @@ const sessionsSlice = createSlice({
   
 });
 
-export const { addUserReview, logOut } = sessionsSlice.actions;
+export const { addUserReview, logOut, resetSessErrors } = sessionsSlice.actions;
 
 export default sessionsSlice.reducer;

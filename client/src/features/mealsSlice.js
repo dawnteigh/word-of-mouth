@@ -49,6 +49,9 @@ const mealsSlice = createSlice({
     },
     resetReview(state) {
       state.newReview = null
+    },
+    resetMealErrors(state) {
+      state.errors = []
     }
   },
   extraReducers: {
@@ -95,6 +98,6 @@ const mealsSlice = createSlice({
   },
 });
 
-export const { mealReviewUpdated, mealReviewDeleted, setMeal, resetReview } = mealsSlice.actions;
+export const { mealReviewUpdated, mealReviewDeleted, setMeal, resetReview, resetMealErrors } = mealsSlice.actions;
 
 export default mealsSlice.reducer;

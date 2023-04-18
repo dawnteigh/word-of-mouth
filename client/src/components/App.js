@@ -11,9 +11,9 @@ import ReviewNew from './ReviewNew'
 import MealFind from './MealFind';
 import Meal from './Meal'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchUser, addUserReview } from '../features/sessionsSlice'
-import { fetchMeals, resetReview } from '../features/mealsSlice'
-import { fetchRestaurants, setRestaurant } from '../features/restaurantsSlice'
+import { fetchUser, addUserReview, resetSessErrors } from '../features/sessionsSlice'
+import { fetchMeals, resetReview,resetMealErrors } from '../features/mealsSlice'
+import { fetchRestaurants, setRestaurant, resetRestErrors } from '../features/restaurantsSlice'
 
 
 function App() {
@@ -52,6 +52,12 @@ function App() {
   }, [errors[0]])
 
   const displayErrors = errors.map((e, i) => <li key={i} >{e}</li>)
+  const handleClick = () => {
+    setOpen(false)
+    dispatch(resetMealErrors())
+    dispatch(resetSessErrors())
+    dispatch(resetRestErrors())
+  }
 
   return (
     <div className="App">
@@ -76,7 +82,7 @@ function App() {
             </ul>
           </Modal.Content>
           <Modal.Actions>
-            <Button color='yellow' inverted onClick={() => setOpen(false)}>
+            <Button color='yellow' inverted onClick={() => handleClick()}>
               <Icon name='checkmark' /> Got it
             </Button>
           </Modal.Actions>
