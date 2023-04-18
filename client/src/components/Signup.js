@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Form, Button } from 'semantic-ui-react'
 import { useDispatch } from 'react-redux'
 import { signUpPost } from '../features/sessionsSlice'
 import { useNavigate } from 'react-router-dom'
@@ -29,38 +30,37 @@ const Signup = () => {
   }
 
   return (
-    <div>
-      Sign up:
-      <form onSubmit={handleSubmit} >
-        <input
-          type="text"
-          label="Username" 
+    <div className='center'>
+      <h3>Sign up</h3>
+      <Form onSubmit={handleSubmit} >
+        <Form.Field
+          control="input"
           placeholder="Username"
           name="username"
           value={signup.username}
           onChange={handleChange}
         />
         <br/>
-        <input
+        <Form.Field
+          control="input"
           type="password"
-          label="Password" 
           placeholder="Password"
           name="password"
           value={signup.password}
           onChange={handleChange}
         />
         <br/>
-         <input
+         <Form.Field
+          control="input"
           type="password"
-          label="Password" 
           placeholder="Confirm Password"
           name="password_confirmation"
           value={signup.password_confirmation}
           onChange={handleChange}
         />
         <br/>
-        <input type="submit" />
-      </form>
+        <Button type='submit'>Submit</Button>
+      </Form>
     </div>
   )
 }

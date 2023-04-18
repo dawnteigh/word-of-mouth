@@ -92,7 +92,7 @@ function App() {
           <div className="App">
             <h1>Welcome to Word of Mouth!</h1>
             <Segment>
-              <Grid columns={2} relaxed='very'>
+              <Grid columns={2}>
                 <Grid.Column>
                   <Login />
                 </Grid.Column>

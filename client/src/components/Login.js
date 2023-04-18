@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Form, Button } from 'semantic-ui-react'
 import { useDispatch } from 'react-redux'
 import { logInPost } from '../features/sessionsSlice'
 import { useNavigate } from 'react-router-dom'
@@ -17,29 +18,28 @@ const Login = () => {
   }
 
   return (
-    <div>
-      Log in:
-      <form onSubmit={handleSubmit} >
-        <input
-          type="text"
-          label="Username" 
+    <div className='center'>
+      <h3>Log in</h3>
+      <Form onSubmit={handleSubmit} >
+        <Form.Field
+          control='input'
           placeholder="Username"
           id="username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
         <br/>
-        <input
+        <Form.Field
+          control='input'
           type="password"
-          label="Password" 
           placeholder="Password"
           id="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <br/>
-        <input type="submit" />
-      </form>
+        <Button type='submit'>Submit</Button>
+      </Form>
     </div>
   )
 }

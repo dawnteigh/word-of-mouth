@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Form, Button } from 'semantic-ui-react'
 import { useDispatch } from 'react-redux'
 import { addRestaurant } from '../features/restaurantsSlice'
 
@@ -29,28 +30,26 @@ const RestaurantForm = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} >
-        <input
-          type="text"
-          label="Name" 
-          placeholder="Name"
+    <div className="center">
+      <Form onSubmit={handleSubmit} >
+        <Form.Field
+          control='input'
+          placeholder="Restaurant Name"
           name="name"
           value={form.name}
           onChange={handleChange}
         />
         <br/>
-        <input
-          type="text"
-          label="Address" 
-          placeholder="Address"
+        <Form.Field
+          control='input'
+          placeholder="Street Address"
           name="address"
           value={form.address}
           onChange={handleChange}
         />
         <br/>
-        <input type="submit" />
-      </form>
+        <Button type="submit">Submit</Button>
+      </Form>
     </div>
   )
 }

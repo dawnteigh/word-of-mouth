@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Form, Button } from 'semantic-ui-react'
 import { useSelector, useDispatch } from 'react-redux'
 import { addMealWithReview, addReviewToMeal, setMeal } from '../features/mealsSlice'
 import { setRestaurant } from '../features/restaurantsSlice'
@@ -58,13 +59,12 @@ const ReviewForm = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} >
+    <div className={meal ? "largeMargins" : "center" }>
+      <Form onSubmit={handleSubmit} >
         {meal ? 
         null :
-        <input
-        type="text"
-        label="Name" 
+        <Form.Field
+        control='input' 
         placeholder="Name of your dish"
         name="name"
         value={name}
@@ -74,45 +74,43 @@ const ReviewForm = () => {
         {meal ?
         <h3>Write your review:</h3> :
         null}
-        <input
-          type="text-area"
-          label="Content" 
+        <Form.Field
+          control="textarea" 
           placeholder="Content"
           name="content"
           value={form.content}
           onChange={handleChange}
         />
         <br/>
-        <input
-          type="text"
-          label="Image" 
+        <Form.Field
+          control='input' 
           placeholder="Image"
           name="image"
           value={form.image}
           onChange={handleChange}
         />
         <br/>
-        <input
-          type="number"
-          label="Rating" 
+        <Form.Field
+          control='input'
+          type="number" 
           placeholder="Rating"
           name="rating"
           value={form.rating}
           onChange={handleChange}
         />
         <br/>
-        <input
-          type="number"
-          label="Price" 
+        <Form.Field
+          control='input'
+          type="number" 
           placeholder="Price"
           name="price"
           value={form.price}
           onChange={handleChange}
         />
         <br/>
-        <input type="submit" />
-      </form>
-      <button onClick={goBack}>{"< Back"}</button>
+        <Button type="submit">Submit</Button>
+        <Button onClick={goBack}>{"< Back"}</Button>
+      </Form>
     </div>
   )
 }
