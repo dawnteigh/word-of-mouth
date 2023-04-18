@@ -1,23 +1,16 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { useNavigate } from "react-router-dom";
+import { Item } from 'semantic-ui-react'
 import MealCard from './MealCard';
 
 const MealFind = () => {
 
   const [filter, setFilter] = useState("")
   const meals = useSelector(state => state.meals.entities)
-  const navigate = useNavigate()
 
   const filteredMeals = meals.filter(m => m.name.toLowerCase().includes(filter.toLowerCase()))
 
-  const renderMeals = filteredMeals.map(m => {
-    return (
-      <div key={m.id} id={m.id} onClick={() => navigate(`/meals/${m.id}`)} >
-        <MealCard meal={m} />
-      </div>
-    )
-  })
+  const renderMeals = filteredMeals.map(m => <MealCard key={m.id} meal={m} />)
 
   return (
     <div>
@@ -28,7 +21,9 @@ const MealFind = () => {
         placeholder="meal"
       />
       <br/>
-      {renderMeals}
+      <Item.Group divided >
+        {renderMeals}
+      </Item.Group>
     </div>
   )
 }

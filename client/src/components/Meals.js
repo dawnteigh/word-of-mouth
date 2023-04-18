@@ -1,25 +1,16 @@
 import React, { useState } from 'react'
-import MealCard from './MealCard'
+import { Item } from 'semantic-ui-react'
 import { useSelector, useDispatch } from 'react-redux'
-import { setMeal } from '../features/mealsSlice'
+import MealCard from './MealCard'
 
 const Meals = () => {
 
   const meals = useSelector(state => state.meals.entities)
-  const dispatch = useDispatch()
   const [filter, setFilter] = useState("")
 
   const filteredMeals = meals.filter(m => m.name.toLowerCase().includes(filter.toLowerCase()))
 
-  const handleClick = (id) => dispatch(setMeal(id))
-
-  const renderMeals = filteredMeals.map(m => {
-    return (
-      <div key={m.id} id={m.id} onClick={() => handleClick(m.id)} >
-        <MealCard meal={m} />
-      </div>
-    )
-  })
+  const renderMeals = filteredMeals.map(m => <MealCard key={m.id} meal={m} /> )
 
   return (
     <div>
@@ -29,7 +20,9 @@ const Meals = () => {
         onChange={(e) => setFilter(e.target.value)}
         placeholder="Search meals"
       />
+      <Item.Group divided >
         {renderMeals}
+      </Item.Group>
     </div>
   )
 }
