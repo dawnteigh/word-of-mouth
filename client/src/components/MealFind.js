@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { Card } from 'semantic-ui-react'
+import { Card, Input } from 'semantic-ui-react'
 import MealCard from './MealCard';
 
 const MealFind = () => {
@@ -15,10 +15,11 @@ const MealFind = () => {
   return (
     <div>
       <b>{"Find the best "}</b>
-      <input
+      <Input
         value={filter}
         onChange={(e) => setFilter(e.target.value)}
         placeholder="meal"
+        size="mini"
       />
       <br/><br/>
       <div className='foodGrid'>

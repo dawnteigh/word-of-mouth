@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Input } from 'semantic-ui-react'
 import { useSelector, useDispatch } from 'react-redux'
 import { setRestaurant } from '../features/restaurantsSlice'
 
@@ -28,11 +29,12 @@ const Restaurants = () => {
   })
   return (
     <div>
-      <input
+      <Input
         value={filter}
         onChange={(e) => setFilter(e.target.value)}
         placeholder="Search restaurants"
       />
+      <br/><br/>
       {renderRestaurants}
     </div>
   )
