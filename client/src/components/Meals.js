@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Item } from 'semantic-ui-react'
+import { Card } from 'semantic-ui-react'
 import { useSelector, useDispatch } from 'react-redux'
 import MealCard from './MealCard'
 
@@ -20,9 +20,12 @@ const Meals = () => {
         onChange={(e) => setFilter(e.target.value)}
         placeholder="Search meals"
       />
-      <Item.Group divided >
-        {renderMeals}
-      </Item.Group>
+      <br/><br/>
+      <div className='foodGrid'>
+        <Card.Group itemsPerRow={2} centered >
+          {renderMeals}
+        </Card.Group>
+      </div>
     </div>
   )
 }

@@ -50,8 +50,14 @@
   width: auto;
 }
 
-#foodGrid {
-  margin-left: 10%;
-  margin-right: 10%;
-  overflow: auto
+.fitted {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.foodGrid {
+  margin-left: 25%;
+  margin-right: 25%;
 }
