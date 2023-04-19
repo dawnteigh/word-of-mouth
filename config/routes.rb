@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       resources :reviews, only: [:index, :create]
     end
     resources :restaurants, only: [:create, :index]
-
+    
     get "/me", to: "users#show"
     post "/signup", to: "users#create"
     post "/login", to: "sessions#create"
