@@ -39,10 +39,42 @@
 
 #navbar {
   margin-bottom: 2em;
+  margin-top: 1em;
+}
+
+#navbar a {
+  background-color: #a2c8f6;
+  border: 2px solid #422800;
+  box-shadow: #422800 3px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 5px;
+  width: 13% ;
+  line-height: 35px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+#navbar a:hover {
+  background-color: #fff;
 }
 
 #navbar a.active {
-  color: red;
+  box-shadow: #422800 0 2px 0 0;
+  transform: translate(3px, 2px);
+}
+
+@media (min-width: 768px) {
+  #navbar a {
+    min-width: 120px;
+    padding: 0 25px;
+  }
 }
 
 .center {

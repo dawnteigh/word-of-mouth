@@ -28,6 +28,14 @@ const NavBar = () => {
         Home
         </NavLink>
         <NavLink
+          to="/myreviews"
+          className= {({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "active" : ""
+            }
+        >
+        My Reviews
+        </NavLink>
+        <NavLink
           to="/meals"
           className= {({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "active" : ""
@@ -43,7 +51,7 @@ const NavBar = () => {
         >
         Create Review
         </NavLink>
-      <button onClick={handleClick}>Log Out</button>
+      <a onClick={handleClick}>Log Out</a>
       </nav>
     </div>
   )

@@ -43,6 +43,9 @@ const mealsSlice = createSlice({
     mealReviewDeleted(state, action) {
       let meal = state.entities.find((m) => m.id === action.payload.meal.id);
       meal.reviews = meal.reviews.filter(r => r.id !== action.payload.id)
+      if (!meal.reviews[0]) {
+        state.entities = state.entities.filter(m => m.id !== meal.id)
+      }
     },
     setMeal(state, action) {
       state.selectedMeal = parseInt(action.payload)
