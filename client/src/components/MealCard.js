@@ -16,13 +16,15 @@ const MealCard = ({ meal }) => {
       dispatch(setMeal(id))
   }
 
+  const mealImg = meal.reviews[0] ? meal.reviews[Math.floor(Math.random() * meal.reviews.length)].image : null
+
   return (
       <Card onClick={() => handleClick(meal.id)} style={{width: "200px", margin: "5px"}} raised >
         <Card.Content>
           <Card.Header>{meal.name}</Card.Header>
         </Card.Content>
           <Image 
-            src={meal.reviews[Math.floor(Math.random() * meal.reviews.length)].image} 
+            src={mealImg} 
             alt={meal.name} className="fitted"
           />
       </Card>
