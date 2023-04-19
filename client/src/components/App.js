@@ -1,7 +1,7 @@
 import '../css/App.css';
 import React, { useEffect, useState } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
-import { Button, Header, Icon, Modal, Divider, Grid, Segment } from 'semantic-ui-react'
+import { Button, Header, Icon, Modal, Divider, Grid, Segment, Dimmer, Loader } from 'semantic-ui-react'
 import Home from './Home'
 import NavBar from './NavBar'
 import Login from './Login'
@@ -63,7 +63,9 @@ function App() {
     <div className="App">
       {
       loading ?
-      <h1>Loading...</h1> :
+      <Dimmer active>
+        <Loader size='massive'>Loading</Loader>
+      </Dimmer>:
       <>
         <Modal
           basic

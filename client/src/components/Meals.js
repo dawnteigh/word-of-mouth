@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Card, Input } from 'semantic-ui-react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import MealCard from './MealCard'
 
 const Meals = () => {

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { Dimmer, Loader } from 'semantic-ui-react'
 import Restaurant from './Restaurant'
 
 const Meal = () => {
@@ -8,7 +9,11 @@ const Meal = () => {
   const meal = useSelector(state => state.meals.entities.find(m => m.id === parseInt(mealId)))
 
   if (!meal) {
-    return <h1>Loading...</h1>
+    return (
+      <Dimmer active>
+        <Loader size='massive'>Loading</Loader>
+      </Dimmer>  
+    )
   }
 
   const restaurantsWithAvg = meal.restaurants.map(r => {
