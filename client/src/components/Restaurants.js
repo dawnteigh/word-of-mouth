@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Input } from 'semantic-ui-react'
+import { Input, Card } from 'semantic-ui-react'
 import { useSelector, useDispatch } from 'react-redux'
 import { setRestaurant } from '../features/restaurantsSlice'
 
@@ -11,20 +11,18 @@ const Restaurants = () => {
 
   const filteredRestaurants = restaurants.filter(r => r.name.toLowerCase().includes(filter.toLowerCase()))
 
-  const handleClick = (e) => {
-    dispatch(setRestaurant(e.target.id))
+  const handleClick = (id) => {
+    dispatch(setRestaurant(id))
   }
 
   const renderRestaurants = filteredRestaurants.map(r => {
     return (
-      <div 
-        key={r.id}
-        id={r.id}
-        onClick={handleClick}
-      >
-        <b>{r.name}</b><br/>
-        {r.address}<br/><br/>
-      </div>
+    <Card onClick={() => handleClick(r.id)} key={r.id} raised style={{ margin: "5px"}} >
+      <Card.Content>
+        <Card.Header>{r.name}</Card.Header>
+        <Card.Meta>{r.address}</Card.Meta>
+      </Card.Content>
+    </Card>
     )
   })
   return (
@@ -35,7 +33,12 @@ const Restaurants = () => {
         placeholder="Search restaurants"
       />
       <br/><br/>
-      {renderRestaurants}
+      <div className="reviewGrid" >
+      <br/>
+        <Card.Group itemsPerRow={2} centered >
+          {renderRestaurants}
+        </Card.Group>
+      </div>
     </div>
   )
 }
