@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_17_175814) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_19_175156) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,7 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_17_175814) do
     t.text "content"
     t.string "image"
     t.integer "rating"
-    t.integer "price"
+    t.float "price"
     t.bigint "user_id", null: false
     t.bigint "meal_id", null: false
     t.bigint "restaurant_id", null: false

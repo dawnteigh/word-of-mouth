@@ -43,6 +43,9 @@ const mealsSlice = createSlice({
     mealReviewDeleted(state, action) {
       let meal = state.entities.find((m) => m.id === action.payload.meal.id);
       meal.reviews = meal.reviews.filter(r => r.id !== action.payload.id)
+      if (!meal.reviews.find(r => r.restaurant.id === action.payload.restaurant.id)) {
+        meal.restaurants = meal.restaurants.filter(r => r.id !== action.payload.restaurant.id)
+      }
       if (!meal.reviews[0]) {
         state.entities = state.entities.filter(m => m.id !== meal.id)
       }
@@ -92,6 +95,9 @@ const mealsSlice = createSlice({
       else {
         const meal = state.entities.find(m => m.id === state.selectedMeal)
         meal.reviews.push(action.payload)
+        if (!meal.restaurants.find(r => r.id === action.payload.restaurant.id)) {
+          meal.restaurants.push(action.payload.restaurant)
+        }
         state.status = "idle";
         state.selectedMeal = null;
         state.newReview = action.payload
