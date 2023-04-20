@@ -99,6 +99,13 @@
   object-position: 50% 50%;
 }
 
+.fittedReview {
+  height: 200px;
+  width: auto;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
 .foodGrid {
   margin-left: 25%;
   margin-right: 25%;
@@ -108,4 +115,15 @@
   height: 60vh;
   overflow: auto;
   overflow-x: hidden
+}
+
+.reviewGrid2 {
+  overflow: auto;
+  overflow-x: hidden;
+  max-height: 60vh;
+}
+
+.mealShow {
+  margin-right: 25%;
+  margin-left: 25%;
 }

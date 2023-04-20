@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { Dimmer, Loader } from 'semantic-ui-react'
+import { Dimmer, Loader, Item } from 'semantic-ui-react'
 import Restaurant from './Restaurant'
 
 const Meal = () => {
@@ -42,10 +42,12 @@ const Meal = () => {
   )
 
   return (
-    <div>
+    <div className="mealShow">
       <h1>{meal.name}</h1>
       <br/>
-      {meal ? renderRestaurants : null}
+      <Item.Group divided>
+        {meal ? renderRestaurants : null}
+      </Item.Group>
     </div>
   )
 }
