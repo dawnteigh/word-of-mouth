@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Card, Image, Icon, Button } from 'semantic-ui-react'
 import { useDispatch } from 'react-redux'
 import ReviewEdit from './ReviewEdit'
 import { deleteReview } from '../features/sessionsSlice'
@@ -14,17 +15,24 @@ const Review = ({ r }) => {
   }
 
   return (
-    <div>
-      <img className="thumbnail" src={r.image} alt={r.meal.name} /><br/>
-      <b>{r.meal.name}</b><br/>
-      <i>{r.restaurant.name}</i><br/>
-      <p>{r.content}</p>
-      <b>Price:</b> {r.price} | <b>Rating:</b> {r.rating}/5
-      <br/><br/>
-      <button onClick={() => setToggle(!toggle)}>Edit</button>
-      <button onClick={handleDelete}>Delete</button>
-      {toggle ? <ReviewEdit review={r} setToggle={setToggle} toggle={toggle} /> : null}
-    </div>
+      <Card>
+        <Image className="fittedReview" src={r.image} alt={r.meal.name} />
+        <Card.Content>
+          <Card.Header>{r.meal.name}</Card.Header>
+          <Card.Meta>
+          <b>{r.restaurant.name}</b> - <i>{r.restaurant.address}</i>
+          </Card.Meta>
+          <Card.Description>
+            {r.content}
+          </Card.Description>
+        </Card.Content>
+        <Card.Content extra>
+        <b>Price:</b> {r.price} | <b>Rating:</b> {r.rating}/5<br/>
+        <Button onClick={() => setToggle(!toggle)}><Icon name={ toggle ? "backward" : "edit" }/>{ toggle ? "Nevermind" : "Edit" }</Button>
+        <Button onClick={handleDelete}><Icon name="x" />Delete</Button>
+        {toggle ? <ReviewEdit review={r} setToggle={setToggle} toggle={toggle} /> : null}
+        </Card.Content>
+      </Card>
   )
 }
 

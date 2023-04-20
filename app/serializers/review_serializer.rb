@@ -15,7 +15,8 @@ class ReviewSerializer < ActiveModel::Serializer
 
   def avg_rating
     reviews = Review.all.filter { |r| r.key === object.key }.map { |r| r.rating }
-    reviews.sum / reviews.size
+    average = reviews.sum / reviews.size.to_f
+    average.round(1)
   end
 
 end
