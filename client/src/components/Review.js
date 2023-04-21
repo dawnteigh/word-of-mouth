@@ -28,8 +28,10 @@ const Review = ({ r }) => {
         </Card.Content>
         <Card.Content extra>
         <b>Price:</b> {r.price} | <b>Rating:</b> {r.rating}/5<br/>
-        <Button onClick={() => setToggle(!toggle)}><Icon name={ toggle ? "backward" : "edit" }/>{ toggle ? "Nevermind" : "Edit" }</Button>
-        <Button onClick={handleDelete}><Icon name="x" />Delete</Button>
+        <Button size="mini" onClick={() => setToggle(!toggle)}>
+          <Icon name={ toggle ? "backward" : "edit" }/>{ toggle ? "Nevermind" : "Edit" }
+        </Button>
+        <Button size="mini" onClick={handleDelete}><Icon name="x" />Delete</Button>
         {toggle ? <ReviewEdit review={r} setToggle={setToggle} toggle={toggle} /> : null}
         </Card.Content>
       </Card>

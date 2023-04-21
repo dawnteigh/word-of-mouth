@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { editReview } from '../features/sessionsSlice'
 import { mealReviewUpdated } from '../features/mealsSlice'
+import { Form, Button } from 'semantic-ui-react'
 
 const ReviewEdit = ({ review, setToggle, toggle }) => {
 
@@ -38,45 +39,46 @@ const ReviewEdit = ({ review, setToggle, toggle }) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} >
-        <input
-          type="text-area"
-          label="Content" 
+      <Form size="mini" onSubmit={handleSubmit} >
+      <Form.Field
+          control="textarea" 
           placeholder="Content"
+          label="Content"
           name="content"
           value={form.content}
           onChange={handleChange}
         />
         <br/>
-        <input
-          type="text"
-          label="Image" 
+        <Form.Field
+          control='input' 
           placeholder="Image"
+          label="Image URL"
           name="image"
           value={form.image}
           onChange={handleChange}
         />
         <br/>
-        <input
-          type="number"
-          label="Rating" 
+        <Form.Field
+          control='input'
+          type="number" 
           placeholder="Rating"
+          label="Rating out of 5"
           name="rating"
           value={form.rating}
           onChange={handleChange}
         />
         <br/>
-        <input
-          type="number"
-          label="Price" 
+        <Form.Field
+          control='input'
+          type="number" 
           placeholder="Price"
+          label="Price"
           name="price"
           value={form.price}
           onChange={handleChange}
         />
-        <br/>
-        <input type="submit" />
-      </form>
+        <Button type="submit">Submit</Button>
+      </Form>
     </div>
   )
 }
