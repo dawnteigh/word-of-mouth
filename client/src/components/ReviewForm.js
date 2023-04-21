@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Button } from 'semantic-ui-react'
 import { useSelector, useDispatch } from 'react-redux'
-import { addMealWithReview, addReviewToMeal, setMeal } from '../features/mealsSlice'
-import { setRestaurant } from '../features/restaurantsSlice'
+import { addMealWithReview, addReviewToMeal } from '../features/mealsSlice'
 
 const ReviewForm = () => {
   const meal = useSelector(state => state.meals.selectedMeal)
@@ -45,8 +44,6 @@ const ReviewForm = () => {
       rating: form.rating,
       price: form.price
   }
-
-  const goBack = () => (meal) ? dispatch(setMeal(null)) : dispatch(setRestaurant(null))
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -109,7 +106,6 @@ const ReviewForm = () => {
         />
         <br/>
         <Button type="submit">Submit</Button>
-        <Button onClick={goBack}>{"< Back"}</Button>
       </Form>
     </div>
   )

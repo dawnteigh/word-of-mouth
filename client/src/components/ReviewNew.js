@@ -1,14 +1,19 @@
 import React from 'react'
-import { Divider, Grid, Image, Segment } from 'semantic-ui-react'
+import { Divider, Grid, Button, Segment, Icon } from 'semantic-ui-react'
 import Restaurants from './Restaurants'
 import RestaurantForm from './RestaurantForm'
 import Meals from './Meals'
 import ReviewForm from './ReviewForm'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { setMeal } from '../features/mealsSlice'
+import { setRestaurant } from '../features/restaurantsSlice'
 
 const ReviewNew = () => {
   const restaurant = useSelector(state => state.restaurants.selectedRestaurant)
   const meal = useSelector(state => state.meals.selectedMeal)
+  const dispatch = useDispatch()
+
+  const goBack = () => (meal) ? dispatch(setMeal(null)) : dispatch(setRestaurant(null))
 
   if (!restaurant) {
     return (
@@ -46,14 +51,16 @@ const ReviewNew = () => {
           </Grid>
           <Divider vertical>OR</Divider>
         </Segment>
+        <Button onClick={goBack}><Icon name="backward" />Back</Button>
       </div>
     )
   }
 
   return (
     <div>
-      {meal ? null : <Meals />}
       <ReviewForm />
+      <br/>
+      <Button onClick={goBack}><Icon name="backward" />Back</Button>
     </div>
   )
 }
