@@ -10,6 +10,7 @@ import Reviews from './Reviews';
 import ReviewNew from './ReviewNew'
 import MealFind from './MealFind';
 import Meal from './Meal'
+import WordOfMouth from '../WordOfMouth.png'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchUser, addUserReview, resetSessErrors } from '../features/sessionsSlice'
 import { fetchMeals, resetReview,resetMealErrors } from '../features/mealsSlice'
@@ -92,8 +93,8 @@ function App() {
         {
           (!loggedIn && !loading) ?
           <div className="App">
-            <h1>Welcome to Word of Mouth!</h1>
-            <Segment>
+            <img src={WordOfMouth} alt="Word of Mouth" />
+            <Segment raised>
               <Grid columns={2}>
                 <Grid.Column>
                   <Login />
