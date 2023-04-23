@@ -4,7 +4,7 @@ import { Item, Button, Header, Card, Image } from 'semantic-ui-react'
 const Restaurant = ({ restaurant, reviews }) => {
 
   const [open, setOpen] = useState(false)
-
+  const average = reviews.reduce((total, next) => total + next.rating, 0) / reviews.length
   const renderReviews = reviews.map(r => {
     return (
       <Card key={r.id} raised >
@@ -26,7 +26,7 @@ const Restaurant = ({ restaurant, reviews }) => {
   return (
     <Item>
       <Item.Content>
-        <Header as="h1" floated="right">{reviews[0].avg_rating}/5</Header>
+        <Header as="h1" floated="right">{Math.round(average * 10) / 10}/5</Header>
         <Item.Header>{restaurant.name}</Item.Header>
         <Item.Description>{restaurant.address}</Item.Description>
           <br/>
@@ -35,7 +35,7 @@ const Restaurant = ({ restaurant, reviews }) => {
             <Card.Group centered itemsPerRow={2}>{renderReviews}</Card.Group>
           </div> :
           null}
-          <Button onClick={() => setOpen(!open)} floated="right">
+          <Button size="mini" onClick={() => setOpen(!open)} >
             { open ? "Hide Reviews" : "Show Reviews" }
           </Button>
       </Item.Content>

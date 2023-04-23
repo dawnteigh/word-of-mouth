@@ -17,10 +17,11 @@ const Meal = () => {
   }
 
   const restaurantsWithAvg = meal.restaurants.map(r => {
-    const review = meal.reviews.find(rev => rev.restaurant.id === r.id)
+    const reviews = meal.reviews.filter(rev => rev.restaurant.id === r.id)
+    const average = reviews.reduce((total, next) => total + next.rating, 0) / reviews.length
     return {
         ...r,
-        avg_rating: review.avg_rating
+        avg_rating: average
     }  
   })
 
