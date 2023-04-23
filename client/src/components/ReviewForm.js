@@ -69,7 +69,10 @@ const ReviewForm = () => {
         /> }
         <br/>
         {meal ?
-        <h3>Write your review:</h3> :
+        <>
+          <h3>Write your review:</h3>
+          <i>Remember to keep it about the food!</i>
+        </> :
         null}
         <Form.Field
           control="textarea" 

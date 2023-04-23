@@ -46,6 +46,7 @@ const ReviewNew = () => {
             </Grid.Column>
             <Grid.Column>
             <h3>Create a review with a new dish:</h3>
+            <i>Remember to keep it about the food!</i>
             <ReviewForm />
             </Grid.Column>
           </Grid>
