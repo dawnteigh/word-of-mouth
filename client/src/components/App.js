@@ -92,7 +92,7 @@ function App() {
         </Modal>
         {
           (!loggedIn && !loading) ?
-          <div className="App">
+          <div className="App" id="login" >
             <img src={WordOfMouth} alt="Word of Mouth" />
             <Segment raised>
               <Grid columns={2}>
