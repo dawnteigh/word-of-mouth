@@ -8,6 +8,10 @@ const Reviews = () => {
   const reviews = useSelector(state => state.sessions.currentUser.reviews)
 
   const renderReviews = reviews.map(r => <Review key={r.id} r={r} />)
+  
+  if (!reviews[0]) {
+    return <h4>You have no reviews. Click <i>Create Review</i> above to get started!</h4>
+  }
 
   return (
     <div className='center'>

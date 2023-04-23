@@ -58,10 +58,12 @@ Future additions/changes:
 
 - Image uploading for reviews
 
+- Descriptive tags for reviews (savory, vegetarian, radish) to work with an updated meal search system
+
 - Better looking UI. Flexible and comprehensive styling for different viewports.
 
 ## Acknowledgements
-- Word of Mouthutilizes styled components from [Semantic UI React](https://react.semantic-ui.com/).
+- Word of Mouth utilizes styled components from [Semantic UI React](https://react.semantic-ui.com/).
 - Application front end created using [Create React App](https://create-react-app.dev/).
 
 
