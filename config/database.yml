@@ -80,7 +80,6 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
+ production:
   <<: *default
-  database: word_of_mouth_production
-  username: word_of_mouth
-  password: <%= ENV['WORD_OF_MOUTH_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
