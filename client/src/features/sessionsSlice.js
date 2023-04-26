@@ -53,6 +53,7 @@ const sessionsSlice = createSlice({
   initialState: {
     currentUser: {},
     loggedIn: false,
+    edit: false,
     status: "idle",
     errors: []
   },
@@ -63,6 +64,9 @@ const sessionsSlice = createSlice({
     logOut(state) {
       state.currentUser = {}
       state.loggedIn = false
+    },
+    resetEdit(state) {
+      state.edit = false
     },
     resetSessErrors(state) {
       state.errors = []
@@ -122,6 +126,7 @@ const sessionsSlice = createSlice({
       }
       else {
         state.currentUser.reviews = state.currentUser.reviews.map(r => r.id === action.payload.id ? action.payload : r)
+        state.edit = true
         state.status = "idle"
         state.errors = []
     }
@@ -137,6 +142,6 @@ const sessionsSlice = createSlice({
   
 });
 
-export const { addUserReview, logOut, resetSessErrors } = sessionsSlice.actions;
+export const { addUserReview, logOut, resetEdit, resetSessErrors } = sessionsSlice.actions;
 
 export default sessionsSlice.reducer;

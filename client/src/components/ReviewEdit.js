@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { editReview } from '../features/sessionsSlice'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { editReview, resetEdit } from '../features/sessionsSlice'
 import { mealReviewUpdated } from '../features/mealsSlice'
 import { Form, Button } from 'semantic-ui-react'
 
@@ -13,6 +13,21 @@ const ReviewEdit = ({ review, setToggle, toggle }) => {
     rating: rating,
     price: price
   })
+  const success = useSelector(state => state.sessions.edit)
+
+  useEffect(() => {
+    if (success) {
+      dispatch(mealReviewUpdated({ 
+        ...review,
+        content: form.content,
+        image: form.image,
+        rating: parseInt(form.rating),
+        price: parseInt(form.price)
+      }))
+      dispatch(resetEdit())
+      setToggle(!toggle)
+    }
+  }, [success])
 
   const dispatch = useDispatch()
 
@@ -27,14 +42,6 @@ const ReviewEdit = ({ review, setToggle, toggle }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     dispatch(editReview({ id, form }))
-    dispatch(mealReviewUpdated({ 
-      ...review,
-      content: form.content,
-      image: form.image,
-      rating: parseInt(form.rating),
-      price: parseInt(form.price)
-    }))
-    setToggle(!toggle)
   }
 
   return (
