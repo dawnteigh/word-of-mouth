@@ -2,18 +2,15 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { logOut } from '../features/sessionsSlice'
 import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
 
 const NavBar = () => {
   const dispatch = useDispatch()
-  const navigate = useNavigate()
 
   const handleClick = () => {
     fetch('/api/logout', {
       method: "DELETE"
     })
     dispatch(logOut())
-    navigate("/")
   }
 
   return (
@@ -51,7 +48,14 @@ const NavBar = () => {
         >
         Create Review
         </NavLink>
-      <a onClick={handleClick}>Log Out</a>
+        <NavLink
+          to="/"
+          className= {({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "pending" : ""
+            }
+          onClick={handleClick}>
+        Log Out
+        </NavLink>
       </nav>
     </div>
   )
