@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
-  before_save :format_username
+  before_validation :format_username
   has_many :reviews, dependent: :destroy
   has_many :restaurants, through: :reviews
   has_many :meals, through: :reviews
