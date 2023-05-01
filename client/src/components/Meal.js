@@ -1,12 +1,13 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { Dimmer, Loader, Item } from 'semantic-ui-react'
+import { Dimmer, Loader, Item, Button, Icon } from 'semantic-ui-react'
 import Restaurant from './Restaurant'
 
 const Meal = () => {
   let { mealId } = useParams()
   const meal = useSelector(state => state.meals.entities.find(m => m.id === parseInt(mealId)))
+  const navigate = useNavigate()
 
   if (!meal) {
     return (
@@ -49,6 +50,7 @@ const Meal = () => {
       <Item.Group divided>
         {meal ? renderRestaurants : null}
       </Item.Group>
+      <Button onClick={() => navigate('/meals')}><Icon name="backward" />Back</Button>
     </div>
   )
 }
