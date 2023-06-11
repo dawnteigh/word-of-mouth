@@ -17,6 +17,10 @@
 #navbar {
   margin-bottom: 2em;
   margin-top: 1em;
+  position: fixed;
+  width: 100%;
+  z-index: 9000;
+  top: 0;
 }
 
 #navbar a {
@@ -52,6 +56,10 @@
     min-width: 120px;
     padding: 0 25px;
   }
+}
+
+.underNav {
+  margin-top: 5em;
 }
 
 .center {

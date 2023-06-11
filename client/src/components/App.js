@@ -108,13 +108,15 @@ function App() {
           </div> :
           <>
             <NavBar />
-            <Routes>
-              <Route path="/" element={ <Home />} />
-              <Route path="/review" element={ <ReviewNew /> } />
-              <Route path="/meals" element={ <MealFind /> } />
-              <Route path="/meals/:mealId" element={ <Meal /> } />
-              <Route path="/myreviews" element={ <Reviews /> } />
-            </Routes>
+            <div className='underNav'>
+              <Routes>
+                <Route path="/" element={ <Home />} />
+                <Route path="/review" element={ <ReviewNew /> } />
+                <Route path="/meals" element={ <MealFind /> } />
+                <Route path="/meals/:mealId" element={ <Meal /> } />
+                <Route path="/myreviews" element={ <Reviews /> } />
+              </Routes>
+            </div>
           </>
         }
       </>
