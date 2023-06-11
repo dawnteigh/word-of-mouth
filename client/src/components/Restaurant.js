@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Item, Button, Header, Card, Image } from 'semantic-ui-react'
+import { Item, Button, Card, Image, Grid } from 'semantic-ui-react'
 
 const Restaurant = ({ restaurant, reviews }) => {
 
@@ -26,18 +26,32 @@ const Restaurant = ({ restaurant, reviews }) => {
   return (
     <Item>
       <Item.Content>
-        <Header as="h1" floated="right">{Math.round(average * 10) / 10}/5</Header>
-        <Item.Header>{restaurant.name}</Item.Header>
-        <Item.Description>{restaurant.address}</Item.Description>
-          <br/>
-          {open ? 
-          <div className="reviewGrid2">
-            <Card.Group centered itemsPerRow={2}>{renderReviews}</Card.Group>
-          </div> :
-          null}
-          <Button size="mini" onClick={() => setOpen(!open)} >
-            { open ? "Hide Reviews" : "Show Reviews" }
-          </Button>
+        <Grid columns={3}>
+          <Grid.Row>
+          <Grid.Column>
+            <Item.Description>
+              <span className='restaurant'>{restaurant.name}</span><br/>
+              <i>{restaurant.address}</i>
+            </Item.Description>
+          </Grid.Column>
+          <Grid.Column>
+            <span className='average'>{Math.round(average * 10) / 10}</span><span className='outta5'>/5</span>
+          </Grid.Column>
+          <Grid.Column>
+            <Button size="small" onClick={() => setOpen(!open)} >
+              { open ? "Hide Reviews" : "Show Reviews" }
+            </Button>
+          </Grid.Column>
+          </Grid.Row>
+        </Grid>
+        <br/>
+          {
+            open ? 
+            <div className="reviewGrid2">
+              <Card.Group centered itemsPerRow={2}>{renderReviews}</Card.Group>
+            </div> :
+            null
+          }
       </Item.Content>
     </Item>
   )

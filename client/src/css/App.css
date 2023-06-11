@@ -106,3 +106,19 @@
   margin-right: 25%;
   margin-left: 25%;
 }
+
+.restaurant {
+  font-size: larger;
+  font-weight: bold;
+}
+
+.average {
+  font-size: 1.8em;
+  line-height: 1.5;
+  font-weight: bold;
+}
+
+.outta5 {
+  vertical-align: super;
+  font-weight: bold;
+}

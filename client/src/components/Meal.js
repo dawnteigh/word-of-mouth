@@ -1,12 +1,13 @@
 import React from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { Dimmer, Loader, Item, Button, Icon } from 'semantic-ui-react'
+import { Dimmer, Loader, Item, Button, Icon, Segment } from 'semantic-ui-react'
 import Restaurant from './Restaurant'
 
 const Meal = () => {
   let { mealId } = useParams()
   const meal = useSelector(state => state.meals.entities.find(m => m.id === parseInt(mealId)))
+  const mealImg = meal.reviews[0] ? meal.reviews[Math.floor(Math.random() * meal.reviews.length)].image : null
   const navigate = useNavigate()
 
   if (!meal) {
@@ -45,7 +46,11 @@ const Meal = () => {
 
   return (
     <div className="mealShow">
-      <h1>{meal.name}</h1>
+      <Segment raised>
+        <h1>{meal.name}</h1>
+        <img src={mealImg} alt={meal.name} className="fitted" />
+        <p>Here is a list of known restaurants that serve {meal.name}, sorted by highest average rating. Click '<b>Show Reviews</b>' to see what our users had to say!</p>
+      </Segment>
       <br/>
       <Item.Group divided>
         {meal ? renderRestaurants : null}
