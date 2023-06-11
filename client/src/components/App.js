@@ -13,7 +13,7 @@ import Meal from './Meal'
 import WordOfMouth from '../WordOfMouth.png'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchUser, addUserReview, resetSessErrors } from '../features/sessionsSlice'
-import { fetchMeals, resetReview,resetMealErrors } from '../features/mealsSlice'
+import { fetchMeals, resetReview, resetMealErrors } from '../features/mealsSlice'
 import { fetchRestaurants, setRestaurant, resetRestErrors } from '../features/restaurantsSlice'
 
 
@@ -28,14 +28,14 @@ function App() {
   
   useEffect(() => {
     dispatch(fetchUser())
-  }, [])
+  }, [dispatch])
 
   useEffect(() => {
     if (loggedIn) {
       dispatch(fetchMeals())
       dispatch(fetchRestaurants())
     }
-  }, [loggedIn])
+  }, [loggedIn, dispatch])
 
   useEffect(() => {
     if (review) {
@@ -44,7 +44,7 @@ function App() {
       dispatch(setRestaurant(null))
       navigate("/myreviews")
     }
-  }, [review])
+  }, [review, dispatch])
 
   useEffect(() => {
     if (errors[0]) {
