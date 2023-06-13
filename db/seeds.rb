@@ -24,7 +24,7 @@ ff = Restaurant.create(name: 'Fancy Feast', address: '721 Meow Ave')
 ek = Restaurant.create(name: "Elle's Kitchen", address: '14 Maine Blvd')
 tn = Restaurant.create(name: 'Taco Nuevo', address: '416 Austin Cir')
 gst = Restaurant.create(name: 'Gastronauts', address: '88 Galaxy Pkwy')
-ff = Restaurant.create(name: 'The Turquoise Onion', address: '3 Oceanview Ln')
+tto = Restaurant.create(name: 'The Turquoise Onion', address: '3 Oceanview Ln')
 
 
 
@@ -37,6 +37,11 @@ nyss = Meal.create(name: 'New York Strip Steak')
 sbp = Meal.create(name: 'Stuffed Bell Peppers')
 slb = Meal.create(name: 'Salmon Burger')
 css = Meal.create(name: 'Caesar Salad')
+onr = Meal.create(name: 'Onion Rings')
+sht = Meal.create(name: 'Shrimp Tacos')
+dnv = Meal.create(name: 'Denver Omelette')
+msc = Meal.create(name: 'Massaman Curry')
+vg = Meal.create(name: 'Vegetable Gyoza')
 
 
 puts "Seeding reviews..."
@@ -117,6 +122,110 @@ bo.reviews.create([
     price: 34.99,
     meal_id: nyss.id,
     restaurant_id: tsp.id
+  },
+])
+lisa.reviews.create([
+  {
+    content: "I usually don't eat at food trucks, but these were a delight! Maybe a little too crispy on some of them, but the top-quality soy sauce made up for it.",
+    image: 'https://www.sbs.com.au/food/sites/sbs.com.au.food/files/styles/full/public/Vegetable-Gyozas.jpg?itok=lob-zLwT',
+    rating: 4,
+    price: 13.50,
+    meal_id: vg.id,
+    restaurant_id: gst.id
+  },
+  {
+    content: 'More cinnamon sugar flatbread please! Oh, the hummus is nice too!',
+    image: 'https://peasandcrayons.com/wp-content/uploads/2018/09/pumpkin-spice-sweet-potato-hummus-recipe-.jpg',
+    rating: 5,
+    price: 15,
+    meal_id: sph.id,
+    restaurant_id: ek.id
+  },
+  {
+    content: 'I had to try it because it was anchovy-free! Not filling enough to be more than an appetizer, but definitely a palate-pleaser.',
+    image: 'https://assets.bonappetit.com/photos/624215f8a76f02a99b29518f/1:1/w_2800,h_2800,c_limit/0328-ceasar-salad-lede.jpg',
+    rating: 4,
+    price: 9.99,
+    meal_id: css.id,
+    restaurant_id: tcg.id
+  },
+])
+bart.reviews.create([
+  {
+    content: 'Man, these are thick! And the breading is so sweet!',
+    image: 'https://img.buzzfeed.com/thumbnailer-prod-us-east-1/7f539fc41a5543aebfe03afed73a0b48/BFV9112_MozzarellaStickOnionRings.jpg',
+    rating: 4,
+    price: 10.98,
+    meal_id: onr.id,
+    restaurant_id: tsp.id
+  },
+  {
+    content: "I don't know why I was expecting to see a fish sticking out from between two buns. That small disappointment aside, I really dug this! The pineapple salsa was the bomb.",
+    image: 'https://kitchenconfidante.com/wp-content/uploads/2019/10/Thai-Salmon-Burgers-kitchenconfidante.com-2332.jpg',
+    rating: 5,
+    price: 24,
+    meal_id: slb.id,
+    restaurant_id: ff.id
+  },
+  {
+    content: 'My two favorite foods in one, pizza and chicken nuggets! Unfortunately, a too-big wad of noodles distracted me from the main event...',
+    image: 'https://assets.epicurious.com/photos/57bdeb19082060f11022b541/master/w_1000,h_667,c_limit/chicken-parmesan.jpg',
+    rating: 3,
+    price: 16,
+    meal_id: chp.id,
+    restaurant_id: ek.id
+  },
+])
+marge.reviews.create([
+  {
+    content: 'It was lovely!',
+    image: 'https://whatsgabycooking.com/wp-content/uploads/2020/01/WGC-Italian-Wedding-Soup-copy-2.jpg',
+    rating: 5,
+    price: 18.99,
+    meal_id: iws.id,
+    restaurant_id: tto.id
+  },
+  {
+    content: 'They were lovely!',
+    image: 'https://thecozycook.com/wp-content/uploads/2022/08/Stuffed-Bell-Peppers-f-500x500.jpg',
+    rating: 5,
+    price: 12.88,
+    meal_id: sbp.id,
+    restaurant_id: tn.id
+  },
+  {
+    content: 'Too SPICY!',
+    image: 'https://www.chilipeppermadness.com/wp-content/uploads/2022/06/Massaman-Curry-SQ.jpg',
+    rating: 5,
+    price: 19.99,
+    meal_id: msc.id,
+    restaurant_id: ek.id
+  },
+])
+homer.reviews.create([
+  {
+    content: 'Mmmm, Denver omelette...',
+    image: 'https://www.jessicagavin.com/wp-content/uploads/2020/09/denver-omelet-18-1200.jpg',
+    rating: 5,
+    price: 18.99,
+    meal_id: dnv.id,
+    restaurant_id: tto.id
+  },
+  {
+    content: 'Mmmm, onion rings...',
+    image: 'https://www.vindulge.com/wp-content/uploads/2021/09/Smoked-Onion-Rings.jpg',
+    rating: 5,
+    price: 12,
+    meal_id: onr.id,
+    restaurant_id: gst.id
+  },
+  {
+    content: 'Mmmm, shrimp tacos...',
+    image: 'https://www.wellplated.com/wp-content/uploads/2018/04/Healthy-Shrimp-Tacos-with-Shrimp-Taco-Sauce.jpg',
+    rating: 5,
+    price: 16.88,
+    meal_id: sht.id,
+    restaurant_id: tn.id
   },
 ])
 
