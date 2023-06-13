@@ -10,6 +10,10 @@ puts "Seeding users..."
 jim = User.create(username: 'Jim', password: 'jim123')
 mel = User.create(username: 'Mel', password: 'mel123')
 bo = User.create(username: 'Bo', password: 'bo123')
+lisa = User.create(username: 'Lisa', password: 'lisa123')
+bart = User.create(username: 'Bart', password: 'bart123')
+marge = User.create(username: 'Marge', password: 'marge123')
+homer = User.create(username: 'Homer', password: 'homer123')
 
 puts "Seeding restaurants..."
 
@@ -17,6 +21,10 @@ tsp = Restaurant.create(name: 'The Salty Pit', address: '343 Jackrabbit Rd')
 tcg = Restaurant.create(name: '24 Carrot Gold', address: '667 Canada Dr')
 sdg = Restaurant.create(name: 'Soup de Grâce', address: '1301 Grouse St')
 ff = Restaurant.create(name: 'Fancy Feast', address: '721 Meow Ave')
+ek = Restaurant.create(name: "Elle's Kitchen", address: '14 Maine Blvd')
+tn = Restaurant.create(name: 'Taco Nuevo', address: '416 Austin Cir')
+gst = Restaurant.create(name: 'Gastronauts', address: '88 Galaxy Pkwy')
+ff = Restaurant.create(name: 'The Turquoise Onion', address: '3 Oceanview Ln')
 
 
 
