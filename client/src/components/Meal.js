@@ -7,7 +7,6 @@ import Restaurant from './Restaurant'
 const Meal = () => {
   let { mealId } = useParams()
   const meal = useSelector(state => state.meals.entities.find(m => m.id === parseInt(mealId)))
-  const mealImg = meal.reviews[0] ? meal.reviews[Math.floor(Math.random() * meal.reviews.length)].image : null
   const navigate = useNavigate()
 
   if (!meal) {
@@ -18,6 +17,7 @@ const Meal = () => {
     )
   }
 
+  const mealImg = meal.reviews[0] ? meal.reviews[Math.floor(Math.random() * meal.reviews.length)].image : null
   const restaurantsWithAvg = meal.restaurants.map(r => {
     const reviews = meal.reviews.filter(rev => rev.restaurant.id === r.id)
     const average = reviews.reduce((total, next) => total + next.rating, 0) / reviews.length
