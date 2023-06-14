@@ -7,6 +7,7 @@ Restaurant.destroy_all
 
 puts "Seeding users..."
 
+demo = User.create(username: 'Demo', password: 'demo123')
 jim = User.create(username: 'Jim', password: 'jim123')
 mel = User.create(username: 'Mel', password: 'mel123')
 bo = User.create(username: 'Bo', password: 'bo123')
@@ -46,6 +47,56 @@ vg = Meal.create(name: 'Vegetable Gyoza')
 
 puts "Seeding reviews..."
 
+demo.reviews.create([
+  { 
+    content: "Rich and flavorful with only a mild kick. The chicken was incredibly tender; thigh meat if I'm not mistaken. It being my first time trying massaman curry, I don't feel qualified to crown this particular recipe over all others. However, in this humble reviewer's opinion, this dish is can't-miss.",
+    image: 'https://www.wellplated.com/wp-content/uploads/2022/08/best-massaman-curry-recipe.jpg',
+    rating: 5,
+    price: 19.99,
+    meal_id: msc.id,
+    restaurant_id: ek.id
+  },
+  {
+    content: "These were pretty spicy, but I personally love that. I typically try to steer clear of slaw (just a weird childhood thing I haven't been able to shake), but the garlic cilantro lime slaw in these tacos has opened my eyes a bit.",
+    image: 'https://pinchofyum.com/wp-content/uploads/Shrimp-Tacos-with-Slaw-Square.jpg',
+    rating: 4,
+    price: 14.95,
+    meal_id: sht.id,
+    restaurant_id: gst.id
+  },
+  {
+    content: 'This omelette endeavors to answer the age-old question: is there such a thing as too much cheese? The answer is yes. On a literal side note, I rather enjoyed the rosemary potatoes.',
+    image: 'https://www.smalltownwoman.com/wp-content/uploads/2014/11/Denver-Omelette-DSC_0063.jpg',
+    rating: 2,
+    price: 16.98,
+    meal_id: dnv.id,
+    restaurant_id: ff.id
+  },
+  { 
+    content: 'They may seem a little pricey, but can you really afford to put a dollar sign on perfection?',
+    image: 'https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/158875.jpg',
+    rating: 5,
+    price: 18.95,
+    meal_id: vg.id,
+    restaurant_id: ek.id
+  },
+  {
+    content: 'An exquisite wagyu cut served with a perfectly complementary chimichurri. I might be back tomorrow!',
+    image: 'https://imperialwagyubeef.com/wp-content/uploads/2020/11/Grilled-NY-Strip.jpg',
+    rating: 5,
+    price: 39.95,
+    meal_id: nyss.id,
+    restaurant_id: tto.id
+  },
+  {
+    content: "The hummus by itself is... inoffensive. Let's call it a step above bland. It does pair extremely well with the real star of the show: cinnamon sugar-blasted pita chips.",
+    image: 'https://img.delicious.com.au/Ff7QeQIy/del/2015/10/spiced-sweet-potato-hummus-21096-2.jpg',
+    rating: 4,
+    price: 15.00,
+    meal_id: sph.id,
+    restaurant_id: ek.id
+  },
+])
 jim.reviews.create([
   { 
     content: 'This Chicken Parmesan is exactly what I would expect out of a place called "The Salty Pit".',
