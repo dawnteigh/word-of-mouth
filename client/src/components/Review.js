@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import ReviewEdit from './ReviewEdit'
 import { deleteReview } from '../features/sessionsSlice'
 import { mealReviewDeleted } from '../features/mealsSlice'
+import Moment from 'react-moment'
 
 const Review = ({ r }) => {
 
@@ -20,7 +21,8 @@ const Review = ({ r }) => {
         <Card.Content>
           <Card.Header>{r.meal.name}</Card.Header>
           <Card.Meta>
-          <b>{r.restaurant.name}</b> - <i>{r.restaurant.address}</i>
+          <b>{r.restaurant.name}</b> - <i>{r.restaurant.address}</i><br/>
+          <span className='subtle'><Moment format='LL'>{r.created_at}</Moment></span>
           </Card.Meta>
           <Card.Description>
             {r.content}

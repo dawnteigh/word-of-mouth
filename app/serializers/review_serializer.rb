@@ -1,5 +1,5 @@
 class ReviewSerializer < ActiveModel::Serializer
-  attributes :id, :content, :image, :rating, :price, :user_id, :restaurant, :meal, :key, :author
+  attributes :id, :content, :image, :rating, :price, :created_at, :user_id, :restaurant, :meal, :key, :author
 
   def meal 
     Meal.find(object.meal_id)

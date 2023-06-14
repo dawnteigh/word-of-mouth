@@ -19,6 +19,7 @@ class Review < ApplicationRecord
     # end
   end
 
+  # extra meal-restaurant link if needed
   def key
     "#{meal_id}" + "#" + "#{restaurant_id}"
   end

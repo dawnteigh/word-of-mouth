@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Item, Button, Card, Image, Grid } from 'semantic-ui-react'
+import Moment from 'react-moment'
 
 const Restaurant = ({ restaurant, reviews }) => {
 
@@ -19,6 +20,8 @@ const Restaurant = ({ restaurant, reviews }) => {
         </Card.Content>
         <Card.Content extra>
           -- {r.author}
+          <br/>
+          <span className='subtle'><Moment format='LL'>{r.created_at}</Moment></span>
         </Card.Content>
       </Card>
     )
