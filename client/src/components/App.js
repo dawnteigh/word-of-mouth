@@ -98,6 +98,8 @@ function App() {
               <Grid columns={2}>
                 <Grid.Column>
                   <Login />
+                  <br/><br/>
+                  <span className='subtle'>Demonstration account: Username - demo | Password - demo123</span>
                 </Grid.Column>
                 <Grid.Column>
                 <Signup />

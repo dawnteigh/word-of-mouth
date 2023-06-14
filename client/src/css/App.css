@@ -2,6 +2,12 @@
   text-align: center;
 }
 
+.subtle {
+  font-style: italic;
+  font-size: smaller;
+  color: rgb(183, 183, 183);
+}
+
 #login {
   margin-left: 10%;
   margin-right: 10%;
