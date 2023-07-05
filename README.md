@@ -8,6 +8,12 @@ Do you ever look at reviews before deciding where to go to eat out? What if you 
 - [NodeJS & npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 - [postgreSQL](https://www.postgresql.org/download/)
 
+You can make sure you have postgreSQL installed with:
+```shell
+psql --version
+```
+If you need additional help or instructions, you can go [here](https://docs.microsoft.com/en-us/windows/wsl/tutorials/wsl-database#install-postgresql) for WSL or [here](https://www.codementor.io/@engineerapart/getting-started-with-postgresql-on-mac-osx-are8jcopb) for OSX.
+
 ## Installation
 - In this application's GitHub repo, click the fork button to create a copy for yourself. Next, in your own fork, click the 'Code' button, make sure SSH is selected, and copy what's there.<br>
 - Head into your CLI (Command Line Interface) and navigate to the directory where Word of Mouth will live. Then run the following commands in order:
@@ -16,13 +22,11 @@ Do you ever look at reviews before deciding where to go to eat out? What if you 
 ~your-computer/cool-apps$ cd word-of-mouth
 ~your-computer/cool-apps/word-of-mouth$ bundle install
 ~your-computer/cool-apps/word-of-mouth$ npm install --prefix client
+# Depending on your setup: #
 ~your-computer/cool-apps/word-of-mouth$ sudo service postgresql start
-``` 
-If the last command gives you issues, make sure you have postgreSQL installed with:
-```shell
-psql --version
+# OR #
+~your-computer/cool-apps/word-of-mouth$ brew services postgresql start
 ```
-If you need additional help or instructions, you can go [here](https://docs.microsoft.com/en-us/windows/wsl/tutorials/wsl-database#install-postgresql) for WSL or [here](https://www.codementor.io/@engineerapart/getting-started-with-postgresql-on-mac-osx-are8jcopb) for OSX.
 
 ## Usage
 If you've installed Word of Mouth on your machine using the instructions above, you're going to need two terminals open.
