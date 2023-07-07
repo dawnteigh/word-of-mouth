@@ -25,11 +25,11 @@ If you need additional help or instructions, you can go [here](https://docs.micr
 # Depending on your setup: #
 ~your-computer/cool-apps/word-of-mouth$ sudo service postgresql start
 # OR #
-~your-computer/cool-apps/word-of-mouth$ brew services postgresql start
+~your-computer/cool-apps/word-of-mouth$ brew services start postgresql
 ```
 
 ## Usage
-If you've installed Word of Mouth on your machine using the instructions above, you're going to need two terminals open.
+Afer installing Word of Mouth on your machine using the instructions above, you're going to need three terminals open.
 In the first one, type:
 ```shell
 ~your-computer/cool-apps/word-of-mouth$ rails s
@@ -38,7 +38,15 @@ This will start the back end on http://localhost:3001. And for the front end (ru
 ```shell
 ~your-computer/cool-apps/word-of-mouth$ npm start --prefix client
 ```
-Using Word of Mouth is pretty straightforward; you will be directed to log in or sign up, and then afterwards you'll see the Home page and a navigation bar from which you can manage your reviews, seek out a specific meal, or create a new review. 
+In the last terminal, run the following commands:
+```shell
+~your-computer/cool-apps/word-of-mouth$ rails db:create
+~your-computer/cool-apps/word-of-mouth$ rails db:migrate
+# This next one is optional, but necessary if you want to use the Demo account and view the app with preloaded data #
+~your-computer/cool-apps/word-of-mouth$ rails db:seed
+```
+
+... and then you're all set! Using Word of Mouth is pretty straightforward; you will be directed to log in or sign up, and then afterwards you'll see the Home page and a navigation bar from which you can manage your reviews, seek out a specific meal, or create a new review. 
 <br><br>
 
 ## Contributing
