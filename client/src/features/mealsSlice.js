@@ -60,52 +60,53 @@ const mealsSlice = createSlice({
       state.errors = []
     }
   },
-  extraReducers: {
-    [fetchMeals.pending](state) {
-      state.status = "loading";
-    },
-    [fetchMeals.fulfilled](state, action) {
-      state.entities = action.payload;
-      state.status = "idle";
-    },
-    [addMealWithReview.pending](state) {
-      state.status = "loading";
-    },
-    [addMealWithReview.fulfilled](state, action) {
-      if (action.payload.error) {
-        state.errors = action.payload.error
-        state.status = "idle"
-      }
-      else {
-        state.entities.push(action.payload);
+  extraReducers: builder => {
+    builder
+      .addCase(fetchMeals.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchMeals.fulfilled, (state, action) => {
+        state.entities = action.payload;
         state.status = "idle";
-        state.selectedMeal = null;
-        state.newReview = action.payload.reviews[0]
-        state.errors = []
-      }
-    },
-    [addReviewToMeal.pending](state) {
-      state.status = "loading";
-    },
-    [addReviewToMeal.fulfilled](state, action) {
-      if (action.payload.error) {
-        state.errors = action.payload.error
-        state.status = "idle"
-      }
-      else {
-        const meal = state.entities.find(m => m.id === state.selectedMeal)
-        meal.reviews.push(action.payload)
-        if (!meal.restaurants.find(r => r.id === action.payload.restaurant.id)) {
-          meal.restaurants.push(action.payload.restaurant)
+      })
+      .addCase(addMealWithReview.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(addMealWithReview.fulfilled, (state, action) => {
+        if (action.payload.error) {
+          state.errors = action.payload.error
+          state.status = "idle"
         }
-        state.status = "idle";
-        state.selectedMeal = null;
-        state.newReview = action.payload
-        state.errors = []
-      }
-    }
-  },
-});
+        else {
+          state.entities.push(action.payload);
+          state.status = "idle";
+          state.selectedMeal = null;
+          state.newReview = action.payload.reviews[0]
+          state.errors = []
+        }
+      })
+      .addCase(addReviewToMeal.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(addReviewToMeal.fulfilled, (state, action) => {
+        if (action.payload.error) {
+          state.errors = action.payload.error
+          state.status = "idle"
+        }
+        else {
+          const meal = state.entities.find(m => m.id === state.selectedMeal)
+          meal.reviews.push(action.payload)
+          if (!meal.restaurants.find(r => r.id === action.payload.restaurant.id)) {
+            meal.restaurants.push(action.payload.restaurant)
+          }
+          state.status = "idle";
+          state.selectedMeal = null;
+          state.newReview = action.payload
+          state.errors = []
+        }
+      })
+  }
+})
 
 export const { mealReviewUpdated, mealReviewDeleted, setMeal, resetReview, resetMealErrors } = mealsSlice.actions;
 

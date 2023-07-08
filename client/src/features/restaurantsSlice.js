@@ -6,17 +6,17 @@ export const fetchRestaurants = createAsyncThunk("restaurants/fetchRestaurants",
   return data;
 });
 
-export const addRestaurant = createAsyncThunk("restaurants/addRestaurant", async (data) => {
+export const addRestaurant = createAsyncThunk("restaurants/addRestaurant", async (formData) => {
   const r = await fetch("/api/restaurants", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      name: data.name,
-      address: data.address
+      name: formData.name,
+      address: formData.address
     })
   });
-  const data_1 = await r.json();
-  return data_1;
+  const data = await r.json();
+  return data;
 })
 
 const restaurantsSlice = createSlice({
@@ -43,31 +43,32 @@ const restaurantsSlice = createSlice({
       state.errors = []
     }
   },
-  extraReducers: {
-    [fetchRestaurants.pending](state) {
-      state.status = "loading";
-    },
-    [fetchRestaurants.fulfilled](state, action) {
-      state.entities = action.payload;
-      state.status = "idle";
-    },
-    [addRestaurant.pending](state) {
-      state.status = "loading";
-    },
-    [addRestaurant.fulfilled](state, action) {
-      if (action.payload.error) {
-        state.errors = action.payload.error
-        state.status = "idle"
-      }
-      else {
-      state.entities.push(action.payload);
-      state.selectedRestaurant = action.payload.id
-      state.errors = []
-      state.status = "idle";
-      }
-    },
-  },
-});
+  extraReducers: builder => {
+    builder
+      .addCase(fetchRestaurants.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchRestaurants.fulfilled, (state, action) => {
+        state.entities = action.payload;
+        state.status = "idle";
+      })
+      .addCase(addRestaurant.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(addRestaurant.fulfilled, (state, action) => {
+        if (action.payload.error) {
+          state.errors = action.payload.error
+          state.status = "idle"
+        }
+        else {
+          state.entities.push(action.payload);
+          state.selectedRestaurant = action.payload.id
+          state.errors = []
+          state.status = "idle";
+        }
+      })
+  }
+})
 
 export const { restaurantAdded, restaurantUpdated, setRestaurant, resetRestErrors } = restaurantsSlice.actions;
 

@@ -72,75 +72,75 @@ const sessionsSlice = createSlice({
       state.errors = []
     }
   },
-  extraReducers: {
-    [fetchUser.pending](state) {
-      state.status = "loading";
-    },
-    [fetchUser.fulfilled](state, action) {
-      if (action.payload.error) {
-        state.status = "idle"
-      }
-      else {
-        state.currentUser = action.payload;
-        state.loggedIn = true;
-        state.status = "idle";
-    }
-    },
-    [logInPost.pending](state) {
-      state.status = "loading"
-    },
-    [logInPost.fulfilled](state, action) {
-      if (action.payload.error) {
-        state.errors = action.payload.error
-        state.status = "idle"
-      }
-      else {
-        state.currentUser = action.payload
-        state.loggedIn = true
-        state.status = "idle"
-        state.errors = []
-    }
-    },
-    [signUpPost.pending](state) {
-      state.status = "loading"
-    },
-    [signUpPost.fulfilled](state, action) {
-      if (action.payload.error) {
-        state.errors = action.payload.error
-        state.status = "idle"
-      }
-      else {
-        state.currentUser = action.payload
-        state.loggedIn = true
-        state.status = "idle"
-        state.errors = []
-    }
-    },
-    [editReview.pending](state) {
-      state.status = "loading"
-    },
-    [editReview.fulfilled](state, action) {
-      if (action.payload.error) {
-        state.errors = action.payload.error
-        state.status = "idle"
-      }
-      else {
-        state.currentUser.reviews = state.currentUser.reviews.map(r => r.id === action.payload.id ? action.payload : r)
-        state.edit = true
-        state.status = "idle"
-        state.errors = []
-    }
-    },
-    [deleteReview.pending](state) {
-      state.status = "loading"
-    },
-    [deleteReview.fulfilled](state, action) {
+  extraReducers: builder => {
+    builder
+      .addCase(fetchUser.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchUser.fulfilled, (state, action) => {
+        if (action.payload.error) {
+          state.status = "idle"
+        }
+        else {
+          state.currentUser = action.payload;
+          state.loggedIn = true;
+          state.status = "idle";
+        }
+      })
+      .addCase(logInPost.pending, (state) => {
+        state.status = "loading"
+      })
+      .addCase(logInPost.fulfilled, (state, action) => {
+        if (action.payload.error) {
+          state.errors = action.payload.error
+          state.status = "idle"
+        }
+        else {
+          state.currentUser = action.payload
+          state.loggedIn = true
+          state.status = "idle"
+          state.errors = []
+        }
+      })
+      .addCase(signUpPost.pending, (state) => {
+        state.status = "loading"
+      })
+      .addCase(signUpPost.fulfilled, (state, action) => {
+        if (action.payload.error) {
+          state.errors = action.payload.error
+          state.status = "idle"
+        }
+        else {
+          state.currentUser = action.payload
+          state.loggedIn = true
+          state.status = "idle"
+          state.errors = []
+        }
+      })
+      .addCase(editReview.pending, (state) => {
+        state.status = "loading"
+      })
+      .addCase(editReview.fulfilled, (state, action) => {
+        if (action.payload.error) {
+          state.errors = action.payload.error
+          state.status = "idle"
+        }
+        else {
+          state.currentUser.reviews = state.currentUser.reviews.map(r => r.id === action.payload.id ? action.payload : r)
+          state.edit = true
+          state.status = "idle"
+          state.errors = []
+        }
+      })
+      .addCase(deleteReview.pending, (state) => {
+        state.status = "loading"
+      })
+      .addCase(deleteReview.fulfilled, (state, action) => {
         state.currentUser.reviews = state.currentUser.reviews.filter(r => r.id !== action.meta.arg)
         state.status = "idle"
-    }   
+      })   
   }
-  
-});
+})
 
 export const { addUserReview, logOut, resetEdit, resetSessErrors } = sessionsSlice.actions;
 
