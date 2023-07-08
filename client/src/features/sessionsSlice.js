@@ -1,51 +1,51 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export const fetchUser = createAsyncThunk("sessions/fetchUser", () => {
-  return fetch("/api/me")
-    .then((response) => response.json())
-    .then(data => data) 
+export const fetchUser = createAsyncThunk("sessions/fetchUser", async () => {
+  const response = await fetch("/api/me");
+  const data = await response.json();
+  return data; 
 });
 
-export const logInPost = createAsyncThunk("sessions/logInPost", (form) => {
-  return fetch("/api/login", {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({
-        username: form.username.toLowerCase(),
-        password: form.password
-      })
+export const logInPost = createAsyncThunk("sessions/logInPost", async (form) => {
+  const r = await fetch("/api/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      username: form.username.toLowerCase(),
+      password: form.password
     })
-    .then(r => r.json())
-    .then(user => user)
+  });
+  const user = await r.json();
+  return user;
 })
 
-export const signUpPost = createAsyncThunk("sessions/signUpPost", (form) => {
-  return fetch('/api/signup', {
+export const signUpPost = createAsyncThunk("sessions/signUpPost", async (form) => {
+  const r = await fetch('/api/signup', {
     method: "POST",
-    headers: {"Content-Type": "application/json"},
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       username: form.username,
       password: form.password,
       password_confirmation: form.password_confirmation
     })
-  })
-  .then(r => r.json())
-  .then(user => user)
+  });
+  const user = await r.json();
+  return user;
 })
 
-export const editReview = createAsyncThunk("sessions/editReview", ({ id, form }) => {
-  return fetch(`/api/reviews/${id}`, {
+export const editReview = createAsyncThunk("sessions/editReview", async ({ id, form }) => {
+  const r = await fetch(`/api/reviews/${id}`, {
     method: "PATCH",
-    headers: {"Content-Type": "application/json"},
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(form)
-  })
-  .then(r => r.json())
-  .then(data => data)
+  });
+  const data = await r.json();
+  return data;
 })
 
-export const deleteReview = createAsyncThunk("sessions/deleteReview", (id) => {
-  return fetch(`/api/reviews/${id}`, { method: "DELETE" })
-    .then(r => r.data)
+export const deleteReview = createAsyncThunk("sessions/deleteReview", async (id) => {
+  const r = await fetch(`/api/reviews/${id}`, { method: "DELETE" });
+  return r.data;
 })
 
 const sessionsSlice = createSlice({

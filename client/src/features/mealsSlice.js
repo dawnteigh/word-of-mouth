@@ -1,29 +1,29 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export const fetchMeals = createAsyncThunk("meals/fetchMeals", () => {
-  return fetch("/api/meals")
-    .then((response) => response.json())
-    .then((data) => data)
+export const fetchMeals = createAsyncThunk("meals/fetchMeals", async () => {
+  const response = await fetch("/api/meals");
+  const data = await response.json();
+  return data;
 });
 
-export const addMealWithReview = createAsyncThunk("meals/addMealWithReview", (configObj) => {
-  return  fetch('/api/meals', {
+export const addMealWithReview = createAsyncThunk("meals/addMealWithReview", async (configObj) => {
+  const r = await fetch('/api/meals', {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(configObj)
-  })
-  .then(r => r.json())
-  .then(data => data)
+  });
+  const data = await r.json();
+  return data;
 })
 
-export const addReviewToMeal = createAsyncThunk("meals/addReviewToMeal", (configObj) => {
-  return fetch("/api/reviews", {
+export const addReviewToMeal = createAsyncThunk("meals/addReviewToMeal", async (configObj) => {
+  const r = await fetch("/api/reviews", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(configObj)
-  })
-  .then(r => r.json())
-  .then(data => data)
+  });
+  const data = await r.json();
+  return data;
 })
 
 const mealsSlice = createSlice({

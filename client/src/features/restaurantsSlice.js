@@ -1,22 +1,22 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export const fetchRestaurants = createAsyncThunk("restaurants/fetchRestaurants", () => {
-  return fetch("/api/restaurants")
-    .then((response) => response.json())
-    .then((data) => data)
+export const fetchRestaurants = createAsyncThunk("restaurants/fetchRestaurants", async () => {
+  const response = await fetch("/api/restaurants");
+  const data = await response.json();
+  return data;
 });
 
-export const addRestaurant = createAsyncThunk("restaurants/addRestaurant", (data) => {
-  return fetch("/api/restaurants", {
+export const addRestaurant = createAsyncThunk("restaurants/addRestaurant", async (data) => {
+  const r = await fetch("/api/restaurants", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       name: data.name,
       address: data.address
     })
-  })
-  .then(r => r.json())
-  .then(data => data)
+  });
+  const data_1 = await r.json();
+  return data_1;
 })
 
 const restaurantsSlice = createSlice({
