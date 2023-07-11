@@ -51,7 +51,7 @@ const Restaurant = ({ restaurant, reviews }) => {
           {
             open ? 
             <div className="reviewGrid2">
-              <Card.Group centered itemsPerRow={2}>{renderReviews}</Card.Group>
+              <Card.Group centered itemsPerRow={3}>{renderReviews}</Card.Group>
             </div> :
             null
           }
