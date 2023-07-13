@@ -2,6 +2,8 @@
 
 Do you ever look at reviews before deciding where to go to eat out? What if you are in the mood for a specific dish, and you want to know which restaurant does it best? With reviews typically being centered around the restaurant or the reviewer's experience as a whole, you may be in for a whole lot of searching. Word of Mouth aims to answer your culinary query a whole lot faster. Search our database of meal reviews from other users to find the best chicken parmesan in town, or be a trailblazer for others and write your own reviews. On the other side, restaurants can use the reviews and user feedback to fine-tune their menus, retaining more popular dishes over ones that rate poorly. Version 1.0 features crowd-sourced restaurants and meals.
 
+Word of Mouth is deployed [here](https://word-of-mouth.onrender.com) until <u>July 23, 2023</u> if you want to see it in action!
+
 ## Requirements
 - [Ruby](https://www.ruby-lang.org/en/downloads/)
 - [Bundler](https://bundler.io/)
