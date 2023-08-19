@@ -1,5 +1,4 @@
 import React from 'react'
-import { Card, Image } from 'semantic-ui-react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { setMeal } from '../features/mealsSlice'
@@ -19,15 +18,10 @@ const MealCard = ({ meal }) => {
   const mealImg = meal.reviews[0] ? meal.reviews[Math.floor(Math.random() * meal.reviews.length)].image : null
 
   return (
-      <Card onClick={() => handleClick(meal.id)} style={{width: "200px", margin: "5px"}} raised >
-        <Card.Content>
-          <Card.Header>{meal.name}</Card.Header>
-        </Card.Content>
-          <Image 
-            src={mealImg} 
-            alt={meal.name} className="fitted"
-          />
-      </Card>
+      <div className="meal-card" onClick={() => handleClick(meal.id)}>
+          <h2>{meal.name}</h2>
+          <img src={mealImg} alt={meal.name} className="fitted"/>
+      </div>
   )
 }
 

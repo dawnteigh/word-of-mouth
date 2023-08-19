@@ -14,8 +14,8 @@ const Reviews = () => {
   }
 
   return (
-    <div className='center'>
-      <Card.Group centered itemsPerRow={3}>
+    <div className='wrapper'>
+      <Card.Group centered itemsPerRow={3} >
         { renderReviews }
       </Card.Group>
     </div>

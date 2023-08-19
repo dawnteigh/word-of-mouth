@@ -10,33 +10,33 @@ const Review = ({ r }) => {
 
   const [toggle, setToggle] = useState(false)
   const dispatch = useDispatch()
-  const handleDelete = () => { 
+  const handleDelete = () => {
     dispatch(deleteReview(r.id))
     dispatch(mealReviewDeleted(r))
   }
 
   return (
-      <Card>
-        <Image className="fittedReview" src={r.image} alt={r.meal.name} />
-        <Card.Content>
-          <Card.Header>{r.meal.name}</Card.Header>
-          <Card.Meta>
-          <b>{r.restaurant.name}</b> - <i>{r.restaurant.address}</i><br/>
+    <Card className="review-card" >
+      <Image className="fitted-review" src={r.image} alt={r.meal.name} />
+      <Card.Content>
+        <Card.Header>{r.meal.name}</Card.Header>
+        <Card.Meta>
+          <b>{r.restaurant.name}</b> - <i>{r.restaurant.address}</i><br />
           <span className='subtle'><Moment format='LL'>{r.created_at}</Moment></span>
-          </Card.Meta>
-          <Card.Description>
-            {r.content}
-          </Card.Description>
-        </Card.Content>
-        <Card.Content extra>
-        <b>Price:</b> {r.price} | <b>Rating:</b> {r.rating}/5<br/>
+        </Card.Meta>
+        <Card.Description>
+          {r.content}
+        </Card.Description>
+      </Card.Content>
+      <Card.Content extra>
+        <b>Price:</b> {r.price} | <b>Rating:</b> {r.rating}/5<br />
         <Button size="mini" onClick={() => setToggle(!toggle)}>
-          <Icon name={ toggle ? "backward" : "edit" }/>{ toggle ? "Nevermind" : "Edit" }
+          <Icon name={toggle ? "backward" : "edit"} />{toggle ? "Nevermind" : "Edit"}
         </Button>
         <Button size="mini" onClick={handleDelete}><Icon name="x" />Delete</Button>
         {toggle ? <ReviewEdit review={r} setToggle={setToggle} toggle={toggle} /> : null}
-        </Card.Content>
-      </Card>
+      </Card.Content>
+    </Card>
   )
 }
 

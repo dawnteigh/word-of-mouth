@@ -14,7 +14,6 @@ const NavBar = () => {
   }
 
   return (
-    <div>
       <nav id="navbar">
         <NavLink
           to="/"
@@ -57,7 +56,6 @@ const NavBar = () => {
         Log Out
         </NavLink>
       </nav>
-    </div>
   )
 }
 

@@ -1,4 +1,3 @@
-import '../css/App.css';
 import React, { useEffect, useState } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import { Button, Header, Icon, Modal, Divider, Grid, Segment, Dimmer, Loader } from 'semantic-ui-react'
@@ -93,7 +92,7 @@ function App() {
         {
           (!loggedIn && !loading) ?
           <div className="App" id="login" >
-            <img src={WordOfMouth} alt="Word of Mouth" />
+            <img src={WordOfMouth} alt="Word of Mouth" className="logo" />
             <Segment raised>
               <Grid columns={2}>
                 <Grid.Column>
@@ -110,7 +109,6 @@ function App() {
           </div> :
           <>
             <NavBar />
-            <div className='underNav'>
               <Routes>
                 <Route path="/" element={ <Home />} />
                 <Route path="/review" element={ <ReviewNew /> } />
@@ -118,7 +116,6 @@ function App() {
                 <Route path="/meals/:mealId" element={ <Meal /> } />
                 <Route path="/myreviews" element={ <Reviews /> } />
               </Routes>
-            </div>
           </>
         }
       </>

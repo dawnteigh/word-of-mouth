@@ -1,46 +1,111 @@
+:root {
+  font-size: 16px;
+  --top-margin: 5%;
+  --header-text: 1.2rem;
+  --meal-grid: 4;
+  --meal-review-grid: 3
+}
+
+* {
+  box-sizing: border-box;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+h1 {
+ font-size: 1.4rem;
+ margin: 0;
+}
+
+h2 {
+  font-size: 1.1rem;
+  margin: 0;
+  color: #f37ad0;
+}
+
 .App {
   text-align: center;
+  margin: var(--top-margin) auto 0;
+  font-size: 1rem;
+}
+
+.wrapper {
+  max-width: 80%;
+  margin: 5% auto 0;
+}
+
+.logo {
+  width: 60%;
+  height: auto;
+  margin: -10% -5% -5%;
+}
+
+#login {
+  max-width: 70%;
+  margin: 0 auto;
 }
 
 .subtle {
   font-style: italic;
-  font-size: smaller;
+  font-size: .8rem;
   color: rgb(183, 183, 183);
 }
 
-#login {
-  margin-left: 10%;
-  margin-right: 10%;
+#home {
+  width: 60%;
+  border: 2px solid #f37ad0;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  box-shadow: #4b4a4a38 3px 3px 3px 0;
+  font-size: 1rem;
+  padding: 2%;
+  padding-top: none;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  .logo {
+    margin: 0;
+  }
 }
 
-#home {
-  border: 2px solid #a2c8f6;
-  border-radius: 10px;
-  box-shadow: #4b4a4a38 3px 3px 3px 0;
-  padding: 1em;
+#home b {
+  color: rgb(139, 49, 241);
 }
 
 #navbar {
-  margin-bottom: 2em;
-  margin-top: 1em;
+  margin: 0 auto;
+  text-align: center;
   position: fixed;
-  width: 100%;
+  width: 80%;
   z-index: 1000;
   top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
 }
 
 #navbar a {
-  background-color: #a2c8f6;
-  border: 2px solid #000000;
-  box-shadow: #000000 3px 4px 0 0;
-  color: #000000;
+  background-color: #56caf5;
+  border: 2px solid #f37ad0;
+  border-radius: 0 0 10px 10px;
+  box-shadow: #4b4a4a38 3px 3px 3px 0;
+  color: #fff;
   cursor: pointer;
   display: inline-block;
   font-weight: 600;
-  font-size: 18px;
-  padding: 0 5px;
-  width: 13% ;
-  line-height: 35px;
+  font-size: var(--header-text);
+  padding: 0;
+  width: 15%;
+  line-height: 3rem;
   text-align: center;
   text-decoration: none;
   user-select: none;
@@ -49,29 +114,11 @@
 }
 
 #navbar a:hover {
-  background-color: #fff;
+  color: rgb(139, 49, 241);
 }
 
 #navbar a.active {
-  box-shadow: #000000 0 2px 0 0;
-  transform: translate(3px, 2px);
-}
-
-@media (min-width: 768px) {
-  #navbar a {
-    min-width: 120px;
-    padding: 0 25px;
-  }
-}
-
-.underNav {
-  margin-top: 5em;
-}
-
-.center {
-  justify-content: center;
-  margin-left: 10%;
-  margin-right: 10%;
+  box-shadow: #4b4a4a38 inset 3px 3px 3px 0;
 }
 
 .largeMargins {
@@ -80,34 +127,65 @@
   margin-right: 25%;
 }
 
-.thumbnail {
-  height: 200px;
-  width: auto;
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--meal-review-grid), 1fr);
+  gap: 1rem 1rem;
+  align-items: stretch;
+  height: 70vh;
+  overflow: auto;
+  overflow-x: hidden;
+
+  .meal-card {
+    .fitted {
+      max-height: 200px;
+    }
+  }
+}
+
+.meal-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--meal-grid), 1fr);
+  gap: 1rem 1rem;
+}
+
+.meal-card {
+  cursor: pointer;
+  padding: 0;
+  margin: 3%;
+}
+
+
+.meal-card:hover {
+  animation: 2s ease-in-out infinite meal-fade
 }
 
 .fitted {
-  height: 200px;
-  width: 200px;
   object-fit: cover;
   object-position: 50% 50%;
+  width: 100%;
+  height: 100%;
+  max-height: 300px;
 }
 
-.fittedReview {
-  height: 200px;
-  width: auto;
-  object-fit: cover;
-  object-position: 50% 50%;
+.img-container {
+  border: 2px solid #56caf5
 }
 
-.foodGrid {
-  margin-left: 20%;
-  margin-right: 20%;
-}
 
-.reviewGrid {
-  height: 60vh;
+.ui.card.review-card {
+  min-width: 0;
+  min-height: 0;
   overflow: auto;
-  overflow-x: hidden
+  font-size: .9rem;
+}
+
+.fitted-review {
+  height: 100%;
+  max-height: 250px;
+  width: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
 }
 
 .reviewGrid2 {
@@ -122,12 +200,12 @@
 }
 
 .restaurant {
-  font-size: larger;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 
 .average {
-  font-size: 1.8em;
+  font-size: 1.8rem;
   line-height: 1.5;
   font-weight: bold;
 }
@@ -135,4 +213,110 @@
 .outta5 {
   vertical-align: super;
   font-weight: bold;
+}
+
+@media (max-width: 1156px) {
+  :root {
+    --top-margin: 7.5%;
+    --header-text: 1rem;
+    --meal-grid: 3;
+    --meal-review-grid: 2
+  }
+}
+
+@media (max-width: 960px) {
+  :root {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    font-size: 12px;
+    --meal-grid: 2;
+    --meal-review-grid: 1
+  }
+
+  #home, #navbar {
+    width: 90%;
+  }
+
+}
+
+@media (max-width: 480px) {
+  :root {
+    font-size: 10px;
+    --meal-grid: 1;
+    --top-margin: 10%;
+  }
+
+  #navbar {
+    width: 100%;
+  }
+
+  #navbar a {
+    width: 20%;
+  }
+}
+
+@keyframes meal-fade {
+  from {
+    opacity: 1
+  }
+
+  50% {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes laser-border {
+  0% {
+    border-bottom: 3px solid rgba(243, 122, 208, .33)
+  }
+  14% {
+    border-bottom: 3px solid rgba(243, 122, 208, .67);
+    border-left: 3px solid rgba(243, 122, 208, .33)
+  }
+  28% {
+    border-bottom: 3px solid rgba(243, 122, 208, 1);
+    border-left: 3px solid rgba(243, 122, 208, .67);
+    border-top: 3px solid rgba(243, 122, 208, .33);
+  }
+  42% {
+    border-bottom: 3px solid rgba(243, 122, 208, .67);
+    border-left: 3px solid rgba(243, 122, 208, 1);
+    border-top: 3px solid rgba(243, 122, 208, .67);
+    border-right: 3px solid rgba(243, 122, 208, .33)
+  }
+  56% {
+    border-bottom: 3px solid rgba(243, 122, 208, .33);
+    border-left: 3px solid rgba(243, 122, 208, .67);
+    border-top: 3px solid rgba(243, 122, 208, 1);
+    border-right: 3px solid rgba(243, 122, 208, .67)
+  }
+  70% {
+    border-bottom: none;
+    border-left: 3px solid rgba(243, 122, 208, .33);
+    border-top: 3px solid rgba(243, 122, 208, .67);
+    border-right: 3px solid rgba(243, 122, 208, 1)
+  }
+  84% {
+    border-bottom: none;
+    border-left: none;
+    border-top: 3px solid rgba(243, 122, 208, .33);
+    border-right: 3px solid rgba(243, 122, 208, .67)
+  }
+  98% {
+    border-bottom: none;
+    border-left: none;
+    border-top: none;
+    border-right: 3px solid rgba(243, 122, 208, .33)
+  }
+  100% {
+    border: none;
+  }
 }

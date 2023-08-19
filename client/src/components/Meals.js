@@ -20,11 +20,8 @@ const Meals = () => {
         placeholder="Search meals"
       />
       <br/><br/>
-      <div className="reviewGrid">
-      <br/>
-        <Card.Group itemsPerRow="two" centered >
+      <div className="review-grid">
           {renderMeals}
-        </Card.Group>
       </div>
     </div>
   )

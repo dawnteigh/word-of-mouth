@@ -18,7 +18,7 @@ const Login = () => {
   }
 
   return (
-    <div className='center'>
+    <div>
       <h3>Log in</h3>
       <Form onSubmit={handleSubmit} >
         <Form.Field
