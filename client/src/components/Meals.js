@@ -18,6 +18,7 @@ const Meals = () => {
         value={filter}
         onChange={(e) => setFilter(e.target.value)}
         placeholder="Search meals"
+        size="mini"
       />
       <br/><br/>
       <div className="review-grid">

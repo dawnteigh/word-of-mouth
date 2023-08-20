@@ -19,7 +19,7 @@ const MealCard = ({ meal }) => {
 
   return (
       <div className="meal-card" onClick={() => handleClick(meal.id)}>
-          <h2>{meal.name}</h2>
+          <h3>{meal.name}</h3>
           <img src={mealImg} alt={meal.name} className="fitted"/>
       </div>
   )

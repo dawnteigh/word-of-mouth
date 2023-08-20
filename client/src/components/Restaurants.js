@@ -31,6 +31,7 @@ const Restaurants = () => {
         value={filter}
         onChange={(e) => setFilter(e.target.value)}
         placeholder="Search restaurants"
+        size="mini"
       />
       <br/><br/>
       <div className="reviewGrid" >

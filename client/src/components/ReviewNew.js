@@ -17,7 +17,7 @@ const ReviewNew = () => {
 
   if (!restaurant) {
     return (
-      <div>
+      <div className="wrapper">
         <Segment>
           <Grid columns={2}>
             <Grid.Column>
@@ -26,6 +26,7 @@ const ReviewNew = () => {
             </Grid.Column>
             <Grid.Column>
             <h3>Can't find your restaurant? Add it here:</h3>
+            <br />
             <RestaurantForm />
             </Grid.Column>
           </Grid>
@@ -37,7 +38,7 @@ const ReviewNew = () => {
 
   if (!meal) {
     return (
-      <div>
+      <div className="wrapper">
         <Segment>
           <Grid columns={2}>
             <Grid.Column>
@@ -52,16 +53,16 @@ const ReviewNew = () => {
           </Grid>
           <Divider vertical>OR</Divider>
         </Segment>
-        <Button onClick={goBack}><Icon name="backward" />Back</Button>
+        <Button onClick={goBack} size="mini" className="colorful" ><Icon name="backward" />Back</Button>
       </div>
     )
   }
 
   return (
-    <div>
+    <div className="wrapper">
       <ReviewForm />
       <br/>
-      <Button onClick={goBack}><Icon name="backward" />Back</Button>
+      <Button onClick={goBack} size="mini" className="colorful" ><Icon name="backward" />Back</Button>
     </div>
   )
 }

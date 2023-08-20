@@ -8,11 +8,11 @@ const Restaurant = ({ restaurant, reviews }) => {
   const average = reviews.reduce((total, next) => total + next.rating, 0) / reviews.length
   const renderReviews = reviews.map(r => {
     return (
-      <Card key={r.id} raised >
-        <Image src={r.image} alt={r.meal.name} className="fittedReview" />
+      <Card key={r.id} className="review-card" raised >
+        <Image src={r.image} alt={r.meal.name} className="fitted-review" />
         <Card.Content>
           <Card.Meta>
-            <b>Price: </b> {r.price} <b>Rating: </b> {r.rating}/5
+            <b>Price: </b>{r.price} <b>Rating: </b>{r.rating}/5
           </Card.Meta>
           <Card.Description>
             {r.content}
@@ -41,7 +41,7 @@ const Restaurant = ({ restaurant, reviews }) => {
             <span className='average'>{Math.round(average * 10) / 10}</span><span className='outta5'>/5</span>
           </Grid.Column>
           <Grid.Column>
-            <Button size="small" onClick={() => setOpen(!open)} >
+            <Button size="mini" className="colorful" onClick={() => setOpen(!open)} >
               { open ? "Hide Reviews" : "Show Reviews" }
             </Button>
           </Grid.Column>
@@ -51,7 +51,7 @@ const Restaurant = ({ restaurant, reviews }) => {
           {
             open ? 
             <div className="reviewGrid2">
-              <Card.Group centered itemsPerRow={3}>{renderReviews}</Card.Group>
+              <Card.Group centered itemsPerRow={3} stackable doubling >{renderReviews}</Card.Group>
             </div> :
             null
           }

@@ -55,7 +55,7 @@ const Meal = () => {
       <Item.Group divided>
         {meal ? renderRestaurants : null}
       </Item.Group>
-      <Button onClick={() => navigate('/meals')}><Icon name="backward" />Back</Button>
+      <Button onClick={() => navigate('/meals')} size="mini" className="colorful" ><Icon name="backward" />Back</Button>
     </div>
   )
 }

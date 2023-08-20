@@ -22,9 +22,13 @@ h1 {
 }
 
 h2 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+h3 {
   font-size: 1.1rem;
   margin: 0;
-  color: #f37ad0;
 }
 
 .App {
@@ -121,8 +125,7 @@ h2 {
   box-shadow: #4b4a4a38 inset 3px 3px 3px 0;
 }
 
-.largeMargins {
-  justify-content: center;
+.large-margins {
   margin-left: 25%;
   margin-right: 25%;
 }
@@ -155,7 +158,6 @@ h2 {
   margin: 3%;
 }
 
-
 .meal-card:hover {
   animation: 2s ease-in-out infinite meal-fade
 }
@@ -164,18 +166,23 @@ h2 {
   object-fit: cover;
   object-position: 50% 50%;
   width: 100%;
+  max-width: 300px;
   height: 100%;
   max-height: 300px;
 }
 
-.img-container {
-  border: 2px solid #56caf5
+.meal-image {
+  height: 100%;
+  max-height: 300px;
+  width: 100%;
+  max-width: 300px;
+  object-fit: cover;
 }
-
 
 .ui.card.review-card {
   min-width: 0;
   min-height: 0;
+  max-height: 500px;
   overflow: auto;
   font-size: .9rem;
 }
@@ -215,6 +222,28 @@ h2 {
   font-weight: bold;
 }
 
+.button.ui.mini.button.colorful {
+  margin: -5% auto 0;
+  background-color: #56caf5;
+  color: white;
+}
+
+.button.ui.mini.button.colorful:hover {
+  color: rgb(139, 49, 241);
+  animation: 1s ease-in-out infinite laser-border;
+}
+
+.button.ui.mini.button.colorful-review {
+  margin: 5px 3px;
+  background-color: #56caf5;
+  color: white;
+}
+
+.button.ui.mini.button.colorful-review:hover {
+  color: rgb(139, 49, 241);
+  animation: 1s ease-in-out infinite laser-border;
+}
+
 @media (max-width: 1156px) {
   :root {
     --top-margin: 7.5%;
@@ -247,7 +276,7 @@ h2 {
   :root {
     font-size: 10px;
     --meal-grid: 1;
-    --top-margin: 10%;
+    --top-margin: 15%;
   }
 
   #navbar {

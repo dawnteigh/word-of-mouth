@@ -31,7 +31,7 @@ const RestaurantForm = () => {
 
   return (
     <div className="center">
-      <Form onSubmit={handleSubmit} >
+      <Form onSubmit={handleSubmit} size="mini" >
         <Form.Field
           control='input'
           placeholder="Restaurant Name"
@@ -48,7 +48,7 @@ const RestaurantForm = () => {
           onChange={handleChange}
         />
         <br/>
-        <Button type="submit">Submit</Button>
+        <Button type="submit" size="mini" className="colorful" >Submit</Button>
       </Form>
     </div>
   )

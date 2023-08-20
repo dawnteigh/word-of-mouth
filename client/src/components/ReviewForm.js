@@ -56,8 +56,8 @@ const ReviewForm = () => {
   }
 
   return (
-    <div className={meal ? "largeMargins" : "center" }>
-      <Form onSubmit={handleSubmit} >
+    <div className={ meal ? "large-margins" : "wrapper" } >
+      <Form onSubmit={handleSubmit} size="mini">
         {meal ? 
         null :
         <Form.Field
@@ -108,7 +108,7 @@ const ReviewForm = () => {
           onChange={handleChange}
         />
         <br/>
-        <Button type="submit">Submit</Button>
+        <Button type="submit" size="mini" className="colorful" >Submit</Button>
       </Form>
     </div>
   )

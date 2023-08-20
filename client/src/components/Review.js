@@ -30,10 +30,10 @@ const Review = ({ r }) => {
       </Card.Content>
       <Card.Content extra>
         <b>Price:</b> {r.price} | <b>Rating:</b> {r.rating}/5<br />
-        <Button size="mini" onClick={() => setToggle(!toggle)}>
+        <Button size="mini" onClick={() => setToggle(!toggle)} className="colorful-review">
           <Icon name={toggle ? "backward" : "edit"} />{toggle ? "Nevermind" : "Edit"}
         </Button>
-        <Button size="mini" onClick={handleDelete}><Icon name="x" />Delete</Button>
+        <Button size="mini" onClick={handleDelete} className="colorful-review"><Icon name="x" />Delete</Button>
         {toggle ? <ReviewEdit review={r} setToggle={setToggle} toggle={toggle} /> : null}
       </Card.Content>
     </Card>

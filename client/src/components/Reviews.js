@@ -15,7 +15,7 @@ const Reviews = () => {
 
   return (
     <div className='wrapper'>
-      <Card.Group centered itemsPerRow={3} >
+      <Card.Group centered itemsPerRow={3} doubling stackable >
         { renderReviews }
       </Card.Group>
     </div>
