@@ -228,7 +228,7 @@ h3 {
 
 .button.ui.mini.button.colorful:hover {
   color: rgb(139, 49, 241);
-  animation: 1s ease-in-out infinite laser-border;
+  animation: 3s ease-in-out infinite colorchange;
 }
 
 .button.ui.mini.button.colorful-review {
@@ -239,7 +239,7 @@ h3 {
 
 .button.ui.mini.button.colorful-review:hover {
   color: rgb(139, 49, 241);
-  animation: 1s ease-in-out infinite laser-border;
+  animation: 3s ease-in-out infinite colorchange;
 }
 
 @media (max-width: 1156px) {
@@ -301,6 +301,24 @@ h3 {
   }
 }
 
+@keyframes colorchange {
+  from {
+    background-color: #56caf5;
+    box-shadow: none;
+  }
+
+  50% {
+    background-color: #f37ad0;
+    box-shadow: 0px 0px 3px 2px rgba(139, 49, 241, .75);
+  }
+
+  to {
+    background-color: #56caf5;
+    box-shadow: none;
+  }
+}
+
+/* was using for buttons, but border pushes around other elements and reconfiguring everything around position: absolute would be a pain */
 @keyframes laser-border {
   0% {
     border-bottom: 3px solid rgba(243, 122, 208, .33)
