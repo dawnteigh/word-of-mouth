@@ -17,8 +17,8 @@
 }
 
 h1 {
- font-size: 1.4rem;
- margin: 0;
+  font-size: 1.4rem;
+  margin: 0;
 }
 
 h2 {
@@ -133,16 +133,14 @@ h3 {
 .review-grid {
   display: grid;
   grid-template-columns: repeat(var(--meal-review-grid), 1fr);
-  gap: 1rem 1rem;
+  gap: 2rem 1rem;
   align-items: stretch;
   height: 70vh;
   overflow: auto;
   overflow-x: hidden;
 
   .meal-card {
-    .fitted {
-      max-height: 200px;
-    }
+    max-height: 200px;
   }
 }
 
@@ -266,7 +264,8 @@ h3 {
     --meal-review-grid: 1
   }
 
-  #home, #navbar {
+  #home,
+  #navbar {
     width: 90%;
   }
 
@@ -306,45 +305,53 @@ h3 {
   0% {
     border-bottom: 3px solid rgba(243, 122, 208, .33)
   }
+
   14% {
     border-bottom: 3px solid rgba(243, 122, 208, .67);
     border-left: 3px solid rgba(243, 122, 208, .33)
   }
+
   28% {
     border-bottom: 3px solid rgba(243, 122, 208, 1);
     border-left: 3px solid rgba(243, 122, 208, .67);
     border-top: 3px solid rgba(243, 122, 208, .33);
   }
+
   42% {
     border-bottom: 3px solid rgba(243, 122, 208, .67);
     border-left: 3px solid rgba(243, 122, 208, 1);
     border-top: 3px solid rgba(243, 122, 208, .67);
     border-right: 3px solid rgba(243, 122, 208, .33)
   }
+
   56% {
     border-bottom: 3px solid rgba(243, 122, 208, .33);
     border-left: 3px solid rgba(243, 122, 208, .67);
     border-top: 3px solid rgba(243, 122, 208, 1);
     border-right: 3px solid rgba(243, 122, 208, .67)
   }
+
   70% {
     border-bottom: none;
     border-left: 3px solid rgba(243, 122, 208, .33);
     border-top: 3px solid rgba(243, 122, 208, .67);
     border-right: 3px solid rgba(243, 122, 208, 1)
   }
+
   84% {
     border-bottom: none;
     border-left: none;
     border-top: 3px solid rgba(243, 122, 208, .33);
     border-right: 3px solid rgba(243, 122, 208, .67)
   }
+
   98% {
     border-bottom: none;
     border-left: none;
     border-top: none;
     border-right: 3px solid rgba(243, 122, 208, .33)
   }
+
   100% {
     border: none;
   }

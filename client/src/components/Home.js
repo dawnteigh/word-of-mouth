@@ -7,7 +7,7 @@ const Home = () => {
   const user = useSelector(state => state.sessions.currentUser)
 
   return (
-    <div id="home" text >
+    <div id="home" text>
       <br />
       <img src={WordOfMouth} alt="Word of Mouth" className="logo" />
       <h1>Hello, {user.username}!</h1>
