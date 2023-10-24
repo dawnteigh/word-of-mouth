@@ -84,9 +84,11 @@ h3 {
 
 #navbar {
   margin: 0 auto;
+  background-color: #56caf5;
+  box-shadow: 0px 0px 3px 3px #ccc;
   text-align: center;
   position: fixed;
-  width: 80%;
+  width: 100%;
   z-index: 1000;
   top: 0;
   left: 50%;
@@ -99,9 +101,6 @@ h3 {
 
 #navbar a {
   background-color: #56caf5;
-  border: 2px solid #f37ad0;
-  border-radius: 0 0 10px 10px;
-  box-shadow: #4b4a4a38 3px 3px 3px 0;
   color: #fff;
   cursor: pointer;
   display: inline-block;
@@ -122,7 +121,8 @@ h3 {
 }
 
 #navbar a.active {
-  box-shadow: #4b4a4a38 inset 3px 3px 3px 0;
+  color: #f37ad0;
+  box-shadow: 0 5px 2px -2px #f37ad080;
 }
 
 .large-margins {
@@ -291,8 +291,7 @@ h3 {
     --meal-review-grid: 1
   }
 
-  #home,
-  #navbar {
+  #home {
     width: 90%;
   }
 
