@@ -33,3 +33,12 @@ gem "active_model_serializers", "~> 0.10.12"
 
 gem 'bcrypt', '~> 3.1.7'
 
+# Use Active Storage variant
+gem 'image_processing', '~> 1.2'
+
+# Validate file types
+gem 'active_storage_validations'
+
+# Use aws-sdk-s3 to configure Rails to use Amazon Web Services
+gem 'aws-sdk-s3'
+
