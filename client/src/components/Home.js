@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import WordOfMouth from '../WordOfMouth.png'
+import WordOfMouth from '../assets/wom-icon.png'
 
 const Home = () => {
 

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cute+Font&family=Neonderthaw&family=Bad+Script&display=swap');
+
 :root {
   font-size: 16px;
   --top-margin: 5%;
@@ -12,8 +14,17 @@
   scrollbar-width: none;
 }
 
+html {
+  overflow: hidden;
+  background-color: #0F0C15;
+}
+
 *::-webkit-scrollbar {
   display: none;
+}
+
+body {
+  background: none;
 }
 
 h1 {
@@ -35,6 +46,7 @@ h3 {
   text-align: center;
   margin: var(--top-margin) auto 0;
   font-size: 1rem;
+  color: white;
 }
 
 .wrapper {
@@ -48,9 +60,68 @@ h3 {
   margin: -10% -5% -5%;
 }
 
-#login {
-  max-width: 70%;
+.hero-wrapper {
+  position: absolute;
   margin: 0 auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  background-color: #0F0C15;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-image: url('../assets/word-of-mouth-sign.png');
+}
+
+#login {
+  display: flex;
+  width: 15%;
+  flex-flow: column wrap;
+  position: fixed;
+  top: 20%;
+  right: 15%;
+}
+
+.neon {
+  background: none;
+  border: 3px solid #C0EEF6;
+  box-shadow: 0 0 1px 3px inset #4BD4FB, 0 0 1px 2px #4BD4FB, 0 0 3px 5px inset #1757C1, 0 0 3px 5px #1757C1, 0 0 10px 15px inset #1757C150, 0 0 10px 15px #1757C150;
+  color: #E1C8FB;
+  text-shadow: 1px 1px 5px #E660C8, -1px -1px 5px #E660C8, 2px 2px 7px #E12291, -2px -2px 7px #E12291, 7px 7px 10px #E1229150, -7px -7px 10px #E1229150;
+  font-family: 'Bad Script', Georgia, 'Times New Roman', Times, serif;
+  font-weight: 600;
+  font-size: 2rem;
+  border-radius: 15px;
+  padding: 1rem;
+  margin: 5%;
+  cursor: pointer;
+}
+
+.neon:hover {
+  animation: flicker 1000ms ease-out;
+}
+
+@keyframes flicker {
+
+  0%,
+  15%,
+  80% {
+    border: 3px solid #C0EEF6;
+    box-shadow: 0 0 1px 3px inset #4BD4FB, 0 0 1px 2px #4BD4FB, 0 0 3px 5px inset #1757C1, 0 0 3px 5px #1757C1, 0 0 10px 15px inset #1757C150, 0 0 10px 15px #1757C150;
+    color: #E1C8FB;
+    text-shadow: 1px 1px 5px #E660C8, -1px -1px 5px #E660C8, 2px 2px 7px #E12291, -2px -2px 7px #E12291, 7px 7px 10px #E1229150, -7px -7px 10px #E1229150;
+  }
+
+  10%,
+  20% {
+    border-color: rgb(81, 81, 81);
+    box-shadow: none;
+    color: rgb(81, 81, 81);
+    text-shadow: none;
+  }
 }
 
 .subtle {
@@ -84,8 +155,7 @@ h3 {
 
 #navbar {
   margin: 0 auto;
-  background-color: #56caf5;
-  box-shadow: 0px 0px 3px 3px #ccc;
+  background-color: #0F0C15;
   text-align: center;
   position: fixed;
   width: 100%;
@@ -100,29 +170,28 @@ h3 {
 }
 
 #navbar a {
-  background-color: #56caf5;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
+  background: none;
+  border: 3px solid #C0EEF6;
+  box-shadow: 0 0 1px 3px inset #4BD4FB, 0 0 1px 2px #4BD4FB, 0 0 3px 5px inset #1757C1, 0 0 3px 5px #1757C1, 0 0 10px 15px inset #1757C150, 0 0 10px 15px #1757C150;
+  color: #E1C8FB;
+  text-shadow: 1px 1px 5px #E660C8, -1px -1px 5px #E660C8, 2px 2px 7px #E12291, -2px -2px 7px #E12291, 7px 7px 10px #E1229150, -7px -7px 10px #E1229150;
+  font-family: 'Bad Script', Georgia, 'Times New Roman', Times, serif;
   font-weight: 600;
-  font-size: var(--header-text);
-  padding: 0;
-  width: 15%;
-  line-height: 3rem;
-  text-align: center;
-  text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
+  font-size: 1.5rem;
+  border-radius: 15px;
+  padding: 1rem;
+  width: 12%;
+  margin: 1%;
+  cursor: pointer;
 }
 
 #navbar a:hover {
-  color: rgb(139, 49, 241);
+  animation: flicker 1000ms ease-out;
 }
 
 #navbar a.active {
-  color: #f37ad0;
-  box-shadow: 0 5px 2px -2px #f37ad080;
+  box-shadow: 0 0 2px 4px inset #4BD4FB, 0 0 2px 4px #4BD4FB, 0 0 4px 6px inset #1757C1, 0 0 4px 6px #1757C1, 0 0 12px 18px inset #1757C150, 0 0 12px 18px #1757C150;
+  text-shadow: 2px 2px 5px #E660C8, -2px -2px 5px #E660C8, 3px 3px 7px #E12291, -3px -3px 7px #E12291, 9px 9px 10px #E1229150, -9px -9px 10px #E1229150;
 }
 
 .large-margins {
