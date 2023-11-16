@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
-import { Button, Header, Icon, Modal, Divider, Grid, Segment, Dimmer, Loader } from 'semantic-ui-react'
+import { Button, Header, Icon, Modal, Dimmer, Loader } from 'semantic-ui-react'
 import Home from './Home'
 import NavBar from './NavBar'
-import Login from './Login'
-import Signup from './Signup'
+import Hero from './Hero'
 import Reviews from './Reviews';
 import ReviewNew from './ReviewNew'
 import MealFind from './MealFind';
 import Meal from './Meal'
-import WordOfMouth from '../WordOfMouth.png'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchUser, addUserReview, resetSessErrors } from '../features/sessionsSlice'
 import { fetchMeals, resetReview, resetMealErrors } from '../features/mealsSlice'
@@ -24,7 +22,7 @@ function App() {
   const review = useSelector(state => state.meals.newReview)
   const loading = useSelector(state => state.sessions.status === "loading" ? true : false)
   const errors = useSelector(state => state.sessions.errors.concat(state.meals.errors, state.restaurants.errors))
-  
+
   useEffect(() => {
     dispatch(fetchUser())
   }, [dispatch])
@@ -62,63 +60,48 @@ function App() {
   return (
     <div className="App">
       {
-      loading ?
-      <Dimmer active>
-        <Loader size='massive'>Loading</Loader>
-      </Dimmer>:
-      <>
-        <Modal
-          basic
-          onClose={() => setOpen(false)}
-          onOpen={() => setOpen(true)}
-          open={open}
-          size='small'
-        >
-          <Header icon>
-            <Icon color='yellow' name='exclamation triangle' />
-            Your request could not be completed. Here's why:
-          </Header>
-          <Modal.Content>
-            <ul>
-              {displayErrors}
-            </ul>
-          </Modal.Content>
-          <Modal.Actions>
-            <Button color='yellow' inverted onClick={() => handleClick()}>
-              <Icon name='checkmark' /> Got it
-            </Button>
-          </Modal.Actions>
-        </Modal>
-        {
-          (!loggedIn && !loading) ?
-          <div className="App" id="login" >
-            <img src={WordOfMouth} alt="Word of Mouth" className="logo" />
-            <Segment raised>
-              <Grid columns={2}>
-                <Grid.Column>
-                  <Login />
-                  <br/><br/>
-                  <span className='subtle'>Demonstration account: Username - demo | Password - demo123</span>
-                </Grid.Column>
-                <Grid.Column>
-                <Signup />
-                </Grid.Column>
-              </Grid>
-              <Divider vertical>OR</Divider>
-            </Segment>
-          </div> :
+        loading ?
+          <Dimmer active>
+            <Loader size='massive'>Loading</Loader>
+          </Dimmer> :
           <>
-            <NavBar />
-              <Routes>
-                <Route path="/" element={ <Home />} />
-                <Route path="/review" element={ <ReviewNew /> } />
-                <Route path="/meals" element={ <MealFind /> } />
-                <Route path="/meals/:mealId" element={ <Meal /> } />
-                <Route path="/myreviews" element={ <Reviews /> } />
-              </Routes>
+            <Modal
+              basic
+              onClose={() => setOpen(false)}
+              onOpen={() => setOpen(true)}
+              open={open}
+              size='small'
+            >
+              <Header icon>
+                <Icon color='yellow' name='exclamation triangle' />
+                Your request could not be completed. Here's why:
+              </Header>
+              <Modal.Content>
+                <ul>
+                  {displayErrors}
+                </ul>
+              </Modal.Content>
+              <Modal.Actions>
+                <Button color='yellow' inverted onClick={() => handleClick()}>
+                  <Icon name='checkmark' /> Got it
+                </Button>
+              </Modal.Actions>
+            </Modal>
+            {
+              (!loggedIn && !loading) ?
+                <Hero /> :
+                <>
+                  <NavBar />
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/review" element={<ReviewNew />} />
+                    <Route path="/meals" element={<MealFind />} />
+                    <Route path="/meals/:mealId" element={<Meal />} />
+                    <Route path="/myreviews" element={<Reviews />} />
+                  </Routes>
+                </>
+            }
           </>
-        }
-      </>
       }
     </div>
   );
