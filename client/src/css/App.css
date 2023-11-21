@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Cute+Font&family=Neonderthaw&family=Bad+Script&display=swap');
+
 :root {
   font-size: 16px;
-  --top-margin: 5%;
+  --top-margin: 6%;
   --header-text: 1.2rem;
   --meal-grid: 4;
   --meal-review-grid: 3
@@ -12,8 +14,18 @@
   scrollbar-width: none;
 }
 
+html {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
 *::-webkit-scrollbar {
   display: none;
+}
+
+body {
+  background: none;
 }
 
 h1 {
@@ -42,15 +54,48 @@ h3 {
   margin: 5% auto 0;
 }
 
-.logo {
-  width: 60%;
-  height: auto;
-  margin: -10% -5% -5%;
+.hero-wrapper {
+  position: absolute;
+  margin: 0 auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  background-color: #0F0C15;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-image: url('../assets/word-of-mouth-sign.png');
 }
 
 #login {
-  max-width: 70%;
-  margin: 0 auto;
+  display: flex;
+  width: 15%;
+  flex-flow: column wrap;
+  position: fixed;
+  top: 20%;
+  right: 15%;
+}
+
+.neon {
+  background: none;
+  border: 3px solid #C0EEF6;
+  box-shadow: 0 0 1px 3px inset #4BD4FB, 0 0 1px 2px #4BD4FB, 0 0 3px 5px inset #1757C1, 0 0 3px 5px #1757C1, 0 0 10px 15px inset #1757C150, 0 0 10px 15px #1757C150;
+  color: #E1C8FB;
+  text-shadow: 1px 1px 5px #E660C8, -1px -1px 5px #E660C8, 2px 2px 7px #E12291, -2px -2px 7px #E12291, 7px 7px 10px #E1229150, -7px -7px 10px #E1229150;
+  font-family: 'Bad Script', Georgia, 'Times New Roman', Times, serif;
+  font-weight: 600;
+  font-size: 2rem;
+  border-radius: 15px;
+  padding: 1rem;
+  margin: 5%;
+  cursor: pointer;
+}
+
+.neon:hover {
+  animation: flicker 1000ms ease-out;
 }
 
 .subtle {
@@ -60,32 +105,59 @@ h3 {
 }
 
 #home {
-  width: 60%;
-  border: 2px solid #f37ad0;
-  border-top: none;
-  border-radius: 0 0 10px 10px;
-  box-shadow: #4b4a4a38 3px 3px 3px 0;
-  font-size: 1rem;
-  padding: 2%;
-  padding-top: none;
   position: absolute;
-  top: 0;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  width: 75%;
+  height: 100%;
+  font-size: 1rem;
+}
 
-  .logo {
-    margin: 0;
-  }
+.logo-wrapper {
+  border: 3px solid #C0EEF6;
+  box-shadow: 0 0 1px 3px inset #4BD4FB, 0 0 1px 2px #4BD4FB, 0 0 3px 5px inset #1757C1, 0 0 3px 5px #1757C1, 0 0 10px 15px inset #1757C150, 0 0 10px 15px #1757C150;
+  border-radius: 15px;
+  min-width: min(50%, 400px);
+  height: auto;
+  aspect-ratio: 1/1;
+  background-image: url("../assets/wom-icon.png");
+  background-size: cover;
+}
+
+.home-text {
+  color: white;
+  background-color: #0F0C15;
+  border: 3px solid #C0EEF6;
+  box-shadow: 0 0 1px 3px inset #4BD4FB, 0 0 1px 2px #4BD4FB, 0 0 3px 5px inset #1757C1, 0 0 3px 5px #1757C1, 0 0 10px 15px inset #1757C150, 0 0 10px 15px #1757C150;
+  border-radius: 15px;
+  padding: 2%;
+  min-width: min(50%, 400px);
+  min-height: min(50%, 400px);
+
+}
+
+#home h1 {
+  color: #E1C8FB;
+  text-shadow: 1px 1px 5px #E660C8, -1px -1px 5px #E660C8, 2px 2px 7px #E12291, -2px -2px 7px #E12291, 7px 7px 10px #E1229150, -7px -7px 10px #E1229150;
+  font-family: 'Bad Script', Georgia, 'Times New Roman', Times, serif;
+  font-weight: 600;
+  font-size: 2rem;
 }
 
 #home b {
-  color: rgb(139, 49, 241);
+  color: #C0EEF6;
+  text-shadow: 1px 1px 5px #4BD4FB, -1px -1px 5px #4BD4FB, 2px 2px 7px #1757C1, -2px -2px 7px #1757C1, 7px 7px 10px #1757C150, -7px -7px 10px #1757C150;
 }
 
 #navbar {
   margin: 0 auto;
-  background-color: #56caf5;
-  box-shadow: 0px 0px 3px 3px #ccc;
+  background-color: #0F0C15;
   text-align: center;
   position: fixed;
   width: 100%;
@@ -99,30 +171,37 @@ h3 {
   align-items: center;
 }
 
+#navbar:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  border: 1px solid #C0EEF6;
+  box-shadow: 0 0 1px 3px inset #4BD4FB, 0 0 1px 2px #4BD4FB, 0 0 3px 5px inset #1757C1, 0 0 3px 5px #1757C1, 0 0 10px 15px inset #1757C150, 0 0 10px 15px #1757C150;
+}
+
 #navbar a {
-  background-color: #56caf5;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
+  background: none;
+  color: #E1C8FB;
+  text-shadow: 1px 1px 5px #E660C8, -1px -1px 5px #E660C8, 2px 2px 7px #E12291, -2px -2px 7px #E12291, 7px 7px 10px #E1229150, -7px -7px 10px #E1229150;
+  font-family: 'Bad Script', Georgia, 'Times New Roman', Times, serif;
   font-weight: 600;
-  font-size: var(--header-text);
-  padding: 0;
-  width: 15%;
-  line-height: 3rem;
-  text-align: center;
-  text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
+  font-size: 1.5rem;
+  border-radius: 15px;
+  padding: .5rem;
+  width: 10rem;
+  margin: 1%;
+  cursor: pointer;
+  transition: text-shadow 1000ms ease;
 }
 
 #navbar a:hover {
-  color: rgb(139, 49, 241);
+  animation: nav-flicker 1000ms ease-out;
 }
 
 #navbar a.active {
-  color: #f37ad0;
-  box-shadow: 0 5px 2px -2px #f37ad080;
+  text-shadow: 2px 2px 5px #E660C8, -2px -2px 5px #E660C8, 4px 4px 7px #E12291, -4px -4px 7px #E12291, 10px 10px 10px #E1229150, -10px -10px 10px #E1229150;
 }
 
 .large-margins {
@@ -156,10 +235,12 @@ h3 {
   transform: translateX(-50%);
   width: 50%;
   z-index: 1;
-  background-color: #56caf5;
-  color: white;
-  border: 2px solid #f37ad0;
-  border-radius: 5px;
+  color: #C0EEF6;
+  text-shadow: 1px 1px 5px #4BD4FB, -1px -1px 5px #4BD4FB, 2px 2px 7px #1757C1, -2px -2px 7px #1757C1, 7px 7px 10px #1757C150, -7px -7px 10px #1757C150;
+  background-color: #0F0C15;
+  border: 1px solid #E1C8FB;
+  box-shadow: 0 0 1px 2px inset #E660C8, 0 0 1px 2px #E660C8, 0 0 2px 4px inset #E12291, 0 0 2px 4px #E12291, 0 0 4px 8px inset #E1229150, 0 0 4px 8px #E1229150;
+  border-radius: 15px;
   padding: .5rem;
 }
 
@@ -167,7 +248,7 @@ h3 {
   outline: none;
   width: 50%;
   border-radius: 5px;
-  border: 1px solid #f37ad0;
+  border: 2px solid #C0EEF6;
   padding-inline-start: 2%;
 }
 
@@ -293,6 +374,11 @@ h3 {
 
   #home {
     width: 90%;
+    flex-flow: column wrap;
+  }
+
+  .home-text {
+    min-height: max-content;
   }
 
 }
@@ -310,6 +396,46 @@ h3 {
 
   #navbar a {
     width: 20%;
+  }
+
+  .logo-wrapper {
+    width: 90%;
+  }
+}
+
+@keyframes flicker {
+
+  0%,
+  15%,
+  80% {
+    border: 3px solid #C0EEF6;
+    box-shadow: 0 0 1px 3px inset #4BD4FB, 0 0 1px 2px #4BD4FB, 0 0 3px 5px inset #1757C1, 0 0 3px 5px #1757C1, 0 0 10px 15px inset #1757C150, 0 0 10px 15px #1757C150;
+    color: #E1C8FB;
+    text-shadow: 1px 1px 5px #E660C8, -1px -1px 5px #E660C8, 2px 2px 7px #E12291, -2px -2px 7px #E12291, 7px 7px 10px #E1229150, -7px -7px 10px #E1229150;
+  }
+
+  10%,
+  20% {
+    border-color: rgb(81, 81, 81);
+    box-shadow: none;
+    color: rgb(81, 81, 81);
+    text-shadow: none;
+  }
+}
+
+@keyframes nav-flicker {
+
+  0%,
+  15%,
+  80% {
+    color: #E1C8FB;
+    text-shadow: 1px 1px 5px #E660C8, -1px -1px 5px #E660C8, 2px 2px 7px #E12291, -2px -2px 7px #E12291, 7px 7px 10px #E1229150, -7px -7px 10px #E1229150;
+  }
+
+  10%,
+  20% {
+    color: rgb(81, 81, 81);
+    text-shadow: none;
   }
 }
 
